@@ -12,9 +12,6 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('categories', CategorieController::class);
 });
 
-// Routes publiques (lecture seule)
-Route::get('categories', [CategorieController::class, 'index']);
-Route::get('categories/{id}', [CategorieController::class, 'show']);
 
 // --------------------------------------------------------------------------------------------------------------------------------
 

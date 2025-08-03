@@ -38,10 +38,16 @@ class LivresController extends Controller
 }
 
 
-    public function show($id)
-    {
-        return Livres::with(['categorie', 'user'])->findOrFail($id);
-    }
+  public function show($slug)
+{
+    $livre = Livres::with(['categorie', 'user'])->where('slug', $slug)->firstOrFail();
+
+    return response()->json([
+        'message' => 'Livre récupéré avec succès',
+        'livre' => $livre,
+    ]);
+}
+
 
 public function update(Request $request, $slug)
 {
