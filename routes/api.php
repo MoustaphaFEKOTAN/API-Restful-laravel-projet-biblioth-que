@@ -1,9 +1,10 @@
 <?php
 
-
-
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LivresController;
+use App\Http\Controllers\RolesController;
 use App\Models\Roles;
 
 // --------------------------------------------------------------------------------------------------------------------------------
@@ -11,6 +12,12 @@ use App\Models\Roles;
 //  LES ROUTES POUR LES ACTIONS SUR LA TABLE categories
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('categories', CategorieController::class);
+});
+
+
+//  LES ROUTES POUR LES ACTIONS SUR LA TABLE Role
+Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+    Route::apiResource('roles', RolesController::class);
 });
 
 
@@ -31,16 +38,18 @@ Route::prefix('livres')->group(function () {
 });
 
 
+
 // --------------------------------------------------------------------------------------------------------------------------------
 
 //    LES ROUTES POUR LES ACTIONS SUR LA TABLE USERS
 
 Route::post('/register', [AuthController::class, 'register']);
 
+// --------------------------------------------------------------------------------------------------------------------------------
 
-// liste des role
+// liste des role a envoyé au formulaire d'enregistrement
 Route::get('/roles', function () {
-    return Roles::select('slug', 'nom')->get();
+    return Roles::select('id', 'nom')->get();
 });
 
 

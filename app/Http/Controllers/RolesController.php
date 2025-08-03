@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Roles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RolesController extends Controller
 {
@@ -13,7 +14,9 @@ class RolesController extends Controller
     public function index()
     {
       
-    
+      $role =  Roles::all();
+
+      return response()->json($role);
     }
 
     /**
@@ -21,7 +24,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        //
+      
     }
 
     /**
@@ -29,38 +32,63 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->Validate([
+
+    'nom' => 'required|string'
+      ]);
+
+
+      Roles::Create([
+        'nom' => $request->nom,
+        'slug' => (string) str::uuid(), 
+      ]);
+
+      return response()->json(['message' => 'Role créer avec succes']);
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($slug)
     {
-        //
+       $role =  Roles::Where('slug',$slug)->firstOrFail();
+
+       return response()->json($role);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+   
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$slug)
     {
-        //
+           $role =  Roles::Where('slug',$slug)->firstOrFail();
+
+           $request->validate([
+
+            'nom' => 'sometimes|required',
+           ]);
+
+           if($request->has('nom')){
+$role->update();
+
+return response()->json(['message' => 'Mis a jour effectuee']);
+           };
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($slug)
     {
-        //
+            $role =  Roles::Where('slug',$slug)->firstOrFail();
+
+            if($role){
+                $role->delete();
+            };
     }
 }
