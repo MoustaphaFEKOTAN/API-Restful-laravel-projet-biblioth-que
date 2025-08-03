@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\AuthController;
+
+
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LivresController;
 use App\Http\Controllers\RolesController;
 use App\Models\Roles;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\NewPasswordController;
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
@@ -23,8 +25,6 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::apiResource('roles', RolesController::class);
 });
 
-
-// --------------------------------------------------------------------------------------------------------------------------------
 
 //    LES ROUTES POUR LES ACTIONS SUR LA TABLE LIVRES
 Route::prefix('livres')->group(function () {
@@ -46,22 +46,19 @@ Route::prefix('livres')->group(function () {
 
 //    LES ROUTES POUR LES ACTIONS SUR LA TABLE USERS
 
-Route::post('/register', [AuthController::class, 'register']); //Inscription
+Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth:sanctum');
 
-Route::post('/login', [LoginController::class, 'login']); //Connexion
+// Si tu actives reset password :
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store']);
+Route::post('/reset-password', [NewPasswordController::class, 'store']);
 
-Route::middleware(['auth:sanctum', 'throttle:3,1'])->post('/email/resend', [VerificationController::class, 'resend']);//Demande de vérification de mail
-
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-//Vérification de l'adresse mail automatiquement par laravel
-    return response()->json(['message' => 'Email vérifié avec succès.']);
-})->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
 
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
-// liste des role a envoyé au formulaire d'enregistrement
+// liste des role a envoyé au formulaire d'inscription 
 Route::get('/roles', function () {
     return Roles::select('id', 'nom')->get();
 });

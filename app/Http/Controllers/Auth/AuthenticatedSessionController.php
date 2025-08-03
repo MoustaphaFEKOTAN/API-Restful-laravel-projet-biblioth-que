@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class AuthenticatedSessionController extends Controller
 {
-    public function login(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -23,19 +23,17 @@ class LoginController extends Controller
         $ip = $request->ip();
         $key = 'login:' . $email . '|' . $ip;
 
-        // Si l'utulisateur a déjà tenter trop de tentatives
         if (RateLimiter::tooManyAttempts($key, 5)) {
-            $seconds = RateLimiter::availableIn($key); //Temps d'attente avant de reesayer
+            $seconds = RateLimiter::availableIn($key);
             return response()->json([
                 'message' => 'Trop de tentatives. Réessayez dans ' . $seconds . ' secondes.'
             ], 429);
         }
 
         $user = User::where('email', $email)->first();
- //Sinon, on continue → Vérifie email & mot de passe
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            RateLimiter::hit($key, 60); // +1 pour une mauvaise tentative en 60 s
+            RateLimiter::hit($key, 60);
             throw ValidationException::withMessages([
                 'email' => ['Identifiants invalides.'],
             ]);
@@ -43,19 +41,17 @@ class LoginController extends Controller
 
         if (! $user->hasVerifiedEmail()) {
             $user->sendEmailVerificationNotification();
-
             return response()->json([
                 'message' => 'Adresse e-mail non vérifiée. Un lien vient de vous être renvoyé.'
             ], 403);
         }
 
-        // Tout est bon, on supprime les tentatives
         RateLimiter::clear($key);
 
         $token = $user->createToken(
             'auth_token',
             [],
-            now()->addDays($request->remember_me ? 30 : 1) // expire après 30 jours si remember_me activé
+            now()->addDays($request->remember_me ? 30 : 1)
         )->plainTextToken;
 
         return response()->json([
