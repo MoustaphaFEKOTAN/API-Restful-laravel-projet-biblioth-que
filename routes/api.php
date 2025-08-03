@@ -4,6 +4,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LivresController;
+use App\Models\Roles;
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
@@ -30,6 +31,17 @@ Route::prefix('livres')->group(function () {
 });
 
 
+// --------------------------------------------------------------------------------------------------------------------------------
+
+//    LES ROUTES POUR LES ACTIONS SUR LA TABLE USERS
+
+Route::post('/register', [AuthController::class, 'register']);
+
+
+// liste des role
+Route::get('/roles', function () {
+    return Roles::select('slug', 'nom')->get();
+});
 
 
 // Route::get('/test', function () {

@@ -29,7 +29,7 @@ class CategorieController extends Controller
 
     $categorie = new Categories();
     $categorie->nom = $request->nom;
-    $categorie->slug = (string) Str::uuid(); // 💡 sécurise bien avec cast string
+    $categorie->slug = (string) Str::uuid(); // 💡 sécuriser bien avec cast string
 
     $categorie->save();
 

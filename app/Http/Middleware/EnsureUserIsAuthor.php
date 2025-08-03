@@ -14,14 +14,16 @@ class EnsureUserIsAuthor
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next):Response
-    {
-        if (auth::check() && auth::user()->role->nom === 'auteur') {
-            return $next($request);
-        }
+   public function handle(Request $request, Closure $next): Response
+{
+    $user = Auth::user();
 
-        return response()->json(['message' => 'Accès refusé. Vous devez être un auteur.'], 403);
+    if (Auth::check() && ($user->role->nom === 'auteur' || $user->is_admin)) {
+        return $next($request);
     }
+
+    return response()->json(['message' => 'Accès refusé. Vous devez être un auteur.'], 403);
+}
 
       
 
