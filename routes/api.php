@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +45,11 @@ Route::prefix('livres')->group(function () {
 
 //    LES ROUTES POUR LES ACTIONS SUR LA TABLE USERS
 
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register']); //Inscription
+
+Route::post('/login', [LoginController::class, 'login']); //Connexion
+
+Route::middleware(['auth:sanctum', 'throttle:3,1'])->post('/email/resend', [VerificationController::class, 'resend']);//Demande de vérification de mail
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
