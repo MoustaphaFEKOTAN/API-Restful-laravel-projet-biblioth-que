@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,18 +23,19 @@ class LoginController extends Controller
         $ip = $request->ip();
         $key = 'login:' . $email . '|' . $ip;
 
-        // Si trop de tentatives
+        // Si l'utulisateur a déjà tenter trop de tentatives
         if (RateLimiter::tooManyAttempts($key, 5)) {
-            $seconds = RateLimiter::availableIn($key);
+            $seconds = RateLimiter::availableIn($key); //Temps d'attente avant de reesayer
             return response()->json([
                 'message' => 'Trop de tentatives. Réessayez dans ' . $seconds . ' secondes.'
             ], 429);
         }
 
         $user = User::where('email', $email)->first();
+ //Sinon, on continue → Vérifie email & mot de passe
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            RateLimiter::hit($key, 60); // bloqué pendant 60 secondes
+            RateLimiter::hit($key, 60); // +1 pour une mauvaise tentative en 60 s
             throw ValidationException::withMessages([
                 'email' => ['Identifiants invalides.'],
             ]);

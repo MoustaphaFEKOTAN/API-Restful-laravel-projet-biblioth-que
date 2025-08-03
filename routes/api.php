@@ -52,13 +52,12 @@ Route::post('/login', [LoginController::class, 'login']); //Connexion
 
 Route::middleware(['auth:sanctum', 'throttle:3,1'])->post('/email/resend', [VerificationController::class, 'resend']);//Demande de vérification de mail
 
-
-
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 //Vérification de l'adresse mail automatiquement par laravel
     return response()->json(['message' => 'Email vérifié avec succès.']);
 })->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
+
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
