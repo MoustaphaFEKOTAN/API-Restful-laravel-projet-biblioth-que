@@ -9,86 +9,68 @@ use Illuminate\Support\Str;
 class RolesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Affiche tous les rôles.
      */
     public function index()
     {
-      
-      $role =  Roles::all();
-
-      return response()->json($role);
+        $roles = Roles::all();
+        return response()->json($roles);
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-      
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Crée un nouveau rôle.
      */
     public function store(Request $request)
     {
-       $request->Validate([
+        $request->validate([
+            'nom' => 'required|string'
+        ]);
 
-    'nom' => 'required|string'
-      ]);
+        Roles::create([
+            'nom' => $request->nom,
+            'slug' => Str::uuid(),
+        ]);
 
-
-      Roles::Create([
-        'nom' => $request->nom,
-        'slug' => (string) str::uuid(), 
-      ]);
-
-      return response()->json(['message' => 'Role créer avec succes']);
-
+        return response()->json(['message' => 'Rôle créé avec succès'], 201);
     }
 
     /**
-     * Display the specified resource.
+     * Affiche un rôle spécifique via son slug.
      */
     public function show($slug)
     {
-       $role =  Roles::Where('slug',$slug)->firstOrFail();
-
-       return response()->json($role);
-
+        $role = Roles::where('slug', $slug)->firstOrFail();
+        return response()->json($role);
     }
 
-   
-
     /**
-     * Update the specified resource in storage.
+     * Met à jour un rôle existant.
      */
-    public function update(Request $request,$slug)
+    public function update(Request $request, $slug)
     {
-           $role =  Roles::Where('slug',$slug)->firstOrFail();
+        $role = Roles::where('slug', $slug)->firstOrFail();
 
-           $request->validate([
+        $request->validate([
+            'nom' => 'sometimes|required|string',
+        ]);
 
-            'nom' => 'sometimes|required',
-           ]);
+        if ($request->has('nom')) {
+            $role->nom = $request->nom;
+        }
 
-           if($request->has('nom')){
-$role->update();
+        $role->save();
 
-return response()->json(['message' => 'Mis a jour effectuee']);
-           };
-
+        return response()->json(['message' => 'Mise à jour effectuée']);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Supprime un rôle.
      */
     public function destroy($slug)
     {
-            $role =  Roles::Where('slug',$slug)->firstOrFail();
+        $role = Roles::where('slug', $slug)->firstOrFail();
+        $role->delete();
 
-            if($role){
-                $role->delete();
-            };
+        return response()->json(['message' => 'Rôle supprimé avec succès']);
     }
 }
