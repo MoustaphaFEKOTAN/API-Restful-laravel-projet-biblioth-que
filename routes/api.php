@@ -1,7 +1,5 @@
 <?php
 
-
-
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LivresController;
@@ -11,6 +9,9 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
@@ -54,6 +55,23 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->midd
 Route::post('/forgot-password', [PasswordResetLinkController::class, 'store']);
 Route::post('/reset-password', [NewPasswordController::class, 'store']);
 
+
+// ✅ Vérifier l’e-mail via le lien
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill(); // Marque l’e-mail comme vérifié
+    return response()->json(['message' => 'Email vérifié avec succès.']);
+})->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
+
+// ✅ Renvoyer le lien de vérification
+Route::post('/email/verification-notification', function (Request $request) {
+    if ($request->user()->hasVerifiedEmail()) {
+        return response()->json(['message' => 'Email déjà vérifié.']);
+    }
+
+    $request->user()->sendEmailVerificationNotification();
+
+    return response()->json(['message' => 'Lien de vérification envoyé.']);
+})->middleware(['auth:sanctum'])->name('verification.send');
 
 
 // --------------------------------------------------------------------------------------------------------------------------------

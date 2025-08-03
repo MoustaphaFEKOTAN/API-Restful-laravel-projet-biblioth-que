@@ -30,24 +30,6 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-        Fortify::ignoreRoutes(); // D'abord, ignorer les routes internes
-
-// Ensuite, définir toi-même les routes API
-Fortify::loginView(function () {
-    abort(404);
-});
-
-Fortify::registerView(function () {
-    abort(404);
-});
-
-Fortify::requestPasswordResetLinkView(function () {
-    abort(404);
-});
-
-Fortify::resetPasswordView(function () {
-    abort(404);
-});
 
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
