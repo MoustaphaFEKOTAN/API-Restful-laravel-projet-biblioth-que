@@ -51,7 +51,15 @@ Route::prefix('livres')->group(function () {
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth:sanctum');
+
+Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
+    $request->user()->currentAccessToken()->delete();
+
+    //  $request->user()->tokens()->delete(); Déconnecter de toutes les sessions
+
+    return response()->json(['message' => 'Déconnecté avec succès.']);
+});
+
 
 
 
