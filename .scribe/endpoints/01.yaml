@@ -1,4 +1,4 @@
-name: 'Authentification //Crée un onglet au niveau de la documentation'
+name: 'Authentification '
 description: ''
 endpoints:
   -
@@ -6,7 +6,7 @@ endpoints:
       - POST
     uri: api/register
     metadata:
-      groupName: 'Authentification //Crée un onglet au niveau de la documentation'
+      groupName: 'Authentification '
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''

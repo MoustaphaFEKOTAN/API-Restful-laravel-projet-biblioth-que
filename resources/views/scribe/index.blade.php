@@ -103,13 +103,13 @@ Réinitialise le mot de passe via le token reçu par e-mail.</a>
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-authentification-cree-un-onglet-au-niveau-de-la-documentation" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="authentification-cree-un-onglet-au-niveau-de-la-documentation">
-                    <a href="#authentification-cree-un-onglet-au-niveau-de-la-documentation">Authentification //Crée un onglet au niveau de la documentation</a>
+                    <ul id="tocify-header-authentification" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentification">
+                    <a href="#authentification">Authentification </a>
                 </li>
-                                    <ul id="tocify-subheader-authentification-cree-un-onglet-au-niveau-de-la-documentation" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="authentification-cree-un-onglet-au-niveau-de-la-documentation-POSTapi-register">
-                                <a href="#authentification-cree-un-onglet-au-niveau-de-la-documentation-POSTapi-register">Inscription d’un utilisateur
+                                    <ul id="tocify-subheader-authentification" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentification-POSTapi-register">
+                                <a href="#authentification-POSTapi-register">Inscription d’un utilisateur
 
 Ce endpoint permet à un utilisateur de s’inscrire.</a>
                             </li>
@@ -1095,11 +1095,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                <h1 id="authentification-cree-un-onglet-au-niveau-de-la-documentation">Authentification //Crée un onglet au niveau de la documentation</h1>
+                <h1 id="authentification">Authentification </h1>
 
     
 
-                                <h2 id="authentification-cree-un-onglet-au-niveau-de-la-documentation-POSTapi-register">Inscription d’un utilisateur
+                                <h2 id="authentification-POSTapi-register">Inscription d’un utilisateur
 
 Ce endpoint permet à un utilisateur de s’inscrire.</h2>
 
@@ -2922,7 +2922,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-04T23:33:09\",
+    \"date_sortie\": \"2025-08-04T23:35:16\",
     \"categorie_id\": \"consequatur\"
 }"
 </code></pre></div>
@@ -2941,7 +2941,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-04T23:33:09",
+    "date_sortie": "2025-08-04T23:35:16",
     "categorie_id": "consequatur"
 };
 
@@ -3053,10 +3053,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="POSTapi-livres-store"
-               value="2025-08-04T23:33:09"
+               value="2025-08-04T23:35:16"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:33:09</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:35:16</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3090,7 +3090,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-04T23:33:09\"
+    \"date_sortie\": \"2025-08-04T23:35:16\"
 }"
 </code></pre></div>
 
@@ -3108,7 +3108,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-04T23:33:09"
+    "date_sortie": "2025-08-04T23:35:16"
 };
 
 fetch(url, {
@@ -3231,10 +3231,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="PUTapi-livres--slug-"
-               value="2025-08-04T23:33:09"
+               value="2025-08-04T23:35:16"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:33:09</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:35:16</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
