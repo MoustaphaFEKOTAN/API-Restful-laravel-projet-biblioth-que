@@ -47,7 +47,7 @@ class AuthenticatedSessionController extends Controller
         $token = $user->createToken(
             'auth_token',
             [],
-            now()->addDays($request->remember_me ? 30 : 1)
+            now()->addDays($request->remember_me ? 30 : 1) //si se souvenir de moi est coché ,resté connecté pendant 30J , sinon 1j
         )->plainTextToken;
 
         return response()->json([

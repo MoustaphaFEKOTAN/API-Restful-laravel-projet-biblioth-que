@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+
 use App\Models\Livres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
-class LivresController extends Controller
+class LivreController extends Controller
 {
-    public function index()
+     public function index()
     {
         return Livres::with(['categorie', 'user'])->get();
     }
@@ -70,7 +71,7 @@ public function update(Request $request, $slug)
     public function destroy($slug)
     {
         $livre = Livres::findOrFail($slug);
-       if ($livre->user_id !== auth::id()) {
+       if ($livre->user_id !== Auth::id()) {
     return response()->json(['message' => 'Non autorisé'], 403);
 }
 

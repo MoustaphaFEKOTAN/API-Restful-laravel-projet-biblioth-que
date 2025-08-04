@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LivresController;
 use App\Http\Controllers\RolesController;
 use App\Models\Roles;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\LivreController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -32,14 +32,14 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 //    LES ROUTES POUR LES ACTIONS SUR LA TABLE LIVRES
 Route::prefix('livres')->group(function () {
     // 📖 Tout le monde peut voir les livres
-    Route::get('/', [LivresController::class, 'index']);
-    Route::get('/{slug}', [LivresController::class, 'show']);
+    Route::get('/', [LivreController::class, 'index']);
+    Route::get('/{slug}', [LivreController::class, 'show']);
 
     // ✍️ Seuls les auteurs connectés peuvent créer, modifier ou supprimer
     Route::middleware(['auth:sanctum', 'auteur'])->group(function () {
-        Route::post('/', [LivresController::class, 'store']);
-        Route::put('/{slug}', [LivresController::class, 'update']);
-        Route::delete('/{slug}', [LivresController::class, 'destroy']);
+        Route::post('/store', [LivreController::class, 'store']);
+        Route::put('/{slug}', [LivreController::class, 'update']);
+        Route::delete('/{slug}', [LivreController::class, 'destroy']);
     });
 });
 
@@ -76,7 +76,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 
-//Mot de passe oublié
+//Mot de passe oublié(MAIL DE CHANGEMENT)
 Route::post('/forgot-password', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'email' => ['required', 'email'],
@@ -97,7 +97,7 @@ Route::post('/forgot-password', function (Request $request) {
 
 
 
-//Changement de mot de passe 
+//Nouveau de mot de passe 
 Route::post('/reset-password', function (Request $request) {
     $request->validate([
         'token' => 'required',
@@ -110,7 +110,7 @@ Route::post('/reset-password', function (Request $request) {
         function ($user, $password) {
             $user->forceFill([
                 'password' => Hash::make($password),
-                'remember_token' => Str::random(60),
+                'remember_token' => Str::random(60), //Mettre a jour le remember_me pour invalidé toute autre section active
             ])->save();
 
             event(new PasswordReset($user));
@@ -132,5 +132,5 @@ Route::get('/roles', function () {
 
 
 // Route::get('/test', function () {
-//     return 'rrr';
+//     return 'ceci est un test réussi';
 // });
