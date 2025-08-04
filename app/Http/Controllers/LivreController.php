@@ -104,13 +104,16 @@ public function update(Request $request, $slug)
 
     // 📄 Pagination (10 livres par page par défaut)
     $livres = $query->paginate($request->get('per_page', 10));
-if($livres){ 
     
+  if ($livres->isEmpty()) {
+        return response()->json([
+            'message' => 'Aucun résultat',
+            'data' => [],
+            'total' => 0,
+        ], 200);
+    }
+
     return response()->json($livres);
-
-} 
-
-    return response()->json(["message" => "Aucun résultat"]);
  
 
 }
