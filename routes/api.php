@@ -44,6 +44,7 @@ Route::prefix('livres')->group(function () {
 });
 
 
+Route::get('/recherche/livre', [LivreController::class, 'recherche'])->name('api.livres.index');
 
 // --------------------------------------------------------------------------------------------------------------------------------
 

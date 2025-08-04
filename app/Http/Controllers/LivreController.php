@@ -76,4 +76,43 @@ public function update(Request $request, $slug)
 }
 
     }
+
+    public function recherche(Request $request)
+{
+    $query = Livres::query();
+
+    // 🔍 Filtrage par catégorie (optionnel)
+    if ($request->has('categorie')) {
+        $query->where('categorie_id', $request->categorie);
+    }
+
+    // 🔍 Filtrage par mot-clé dans le titre ou description (optionnel)
+    if ($request->has('search')) {
+        $search = $request->search;
+        $query->where(function($q) use ($search) {
+            $q->where('titre', 'like', "%$search%")
+              ->orWhere('description', 'like', "%$search%");
+        });
+    }
+
+    // 📅 Tri (optionnel)
+    if ($request->has('sort_by') && $request->has('order')) {
+        $query->orderBy($request->sort_by, $request->order);
+    } else {
+        $query->orderBy('created_at', 'desc'); // par défaut
+    }
+
+    // 📄 Pagination (10 livres par page par défaut)
+    $livres = $query->paginate($request->get('per_page', 10));
+if($livres){ 
+    
+    return response()->json($livres);
+
+} 
+
+    return response()->json(["message" => "Aucun résultat"]);
+ 
+
+}
+
 }
