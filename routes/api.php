@@ -7,11 +7,13 @@ use App\Http\Controllers\RolesController;
 use App\Models\Roles;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\NewPasswordController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
@@ -51,9 +53,7 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth:sanctum');
 
-// Si tu actives reset password :
-Route::post('/forgot-password', [PasswordResetLinkController::class, 'store']);
-Route::post('/reset-password', [NewPasswordController::class, 'store']);
+
 
 
 // ✅ Vérifier l’e-mail via le lien
@@ -72,6 +72,55 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return response()->json(['message' => 'Lien de vérification envoyé.']);
 })->middleware(['auth:sanctum'])->name('verification.send');
+
+
+
+
+//Mot de passe oublié
+Route::post('/forgot-password', function (Request $request) {
+    $validator = Validator::make($request->all(), [
+        'email' => ['required', 'email'],
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json(['errors' => $validator->errors()], 422);
+    }
+
+    $status = Password::sendResetLink(
+        $request->only('email')
+    );
+
+    return $status === Password::RESET_LINK_SENT
+        ? response()->json(['message' => 'Lien de réinitialisation envoyé.'])
+        : response()->json(['message' => 'Impossible d\'envoyer le lien.'], 500);
+})->name('api.forgot-password');
+
+
+
+//Changement de mot de passe 
+Route::post('/reset-password', function (Request $request) {
+    $request->validate([
+        'token' => 'required',
+        'email' => 'required|email',
+        'password' => 'required|confirmed|min:8',
+    ]);
+
+    $status = Password::reset(
+        $request->only('email', 'password', 'password_confirmation', 'token'),
+        function ($user, $password) {
+            $user->forceFill([
+                'password' => Hash::make($password),
+                'remember_token' => Str::random(60),
+            ])->save();
+
+            event(new PasswordReset($user));
+        }
+    );
+
+    return $status === Password::PASSWORD_RESET
+        ? response()->json(['message' => 'Mot de passe réinitialisé avec succès.'])
+        : response()->json(['message' => __($status)], 400);
+});
 
 
 // --------------------------------------------------------------------------------------------------------------------------------
