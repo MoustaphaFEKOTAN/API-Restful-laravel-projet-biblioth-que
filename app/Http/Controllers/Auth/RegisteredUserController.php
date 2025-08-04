@@ -16,7 +16,7 @@ class RegisteredUserController extends Controller
         $this->creator = $creator;
     }
 /**
- * @group Authentification
+ * @group Authentification //Crée un onglet au niveau de la documentation
  *
  * Inscription d’un utilisateur
  *
