@@ -11,6 +11,29 @@ use Illuminate\Validation\ValidationException;
 
 class AuthenticatedSessionController extends Controller
 {
+    /**
+ * @group Authentification
+ *
+ * Connexion d’un utilisateur
+ *
+ * Ce endpoint permet à un utilisateur de se connecter.
+ *
+ * @bodyParam email string required L’adresse email. Exemple: jean@example.com
+ * @bodyParam password string required Le mot de passe. Exemple: secret123
+ *
+ * @response 200 {
+ *   "access_token": "token-sanctum-ici",
+ *   "user": {
+ *     "id": 1,
+ *     "name": "Jean Dupont"
+ *   }
+ * }
+ *
+ * @response 401 {
+ *   "message": "Identifiants invalides"
+ * }
+ */
+
     public function store(Request $request)
     {
         $request->validate([

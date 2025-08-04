@@ -67,7 +67,7 @@ endpoints:
     bodyParameters:
       nom:
         name: nom
-        description: 'Must not be greater than 255 characters.'
+        description: 'Le texte de value ne peut pas contenir plus de 255 caractères.'
         required: true
         example: vmqeopfuudtdsufvyvddq
         type: string
@@ -172,7 +172,7 @@ endpoints:
     bodyParameters:
       nom:
         name: nom
-        description: 'Must not be greater than 255 characters.'
+        description: 'Le texte de value ne peut pas contenir plus de 255 caractères.'
         required: false
         example: vmqeopfuudtdsufvyvddq
         type: string
@@ -579,7 +579,7 @@ endpoints:
     bodyParameters:
       titre:
         name: titre
-        description: 'Must not be greater than 255 characters.'
+        description: 'Le texte de value ne peut pas contenir plus de 255 caractères.'
         required: true
         example: vmqeopfuudtdsufvyvddq
         type: string
@@ -599,9 +599,9 @@ endpoints:
         custom: []
       date_sortie:
         name: date_sortie
-        description: 'Must be a valid date.'
+        description: "Le champ value n'est pas une date valide."
         required: true
-        example: '2025-08-04T22:49:29'
+        example: '2025-08-04T23:16:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -620,7 +620,7 @@ endpoints:
     cleanBodyParameters:
       titre: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      date_sortie: '2025-08-04T22:49:29'
+      date_sortie: '2025-08-04T23:16:17'
       categorie_id: consequatur
     fileParameters: []
     responses: []
@@ -665,7 +665,7 @@ endpoints:
     bodyParameters:
       titre:
         name: titre
-        description: 'Must not be greater than 255 characters.'
+        description: 'Le texte de value ne peut pas contenir plus de 255 caractères.'
         required: false
         example: vmqeopfuudtdsufvyvddq
         type: string
@@ -685,9 +685,9 @@ endpoints:
         custom: []
       date_sortie:
         name: date_sortie
-        description: 'Must be a valid date.'
+        description: "Le champ value n'est pas une date valide."
         required: false
-        example: '2025-08-04T22:49:29'
+        example: '2025-08-04T23:16:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -706,7 +706,7 @@ endpoints:
     cleanBodyParameters:
       titre: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      date_sortie: '2025-08-04T22:49:29'
+      date_sortie: '2025-08-04T23:16:17'
     fileParameters: []
     responses: []
     responseFields: []
@@ -784,294 +784,13 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"current_page":1,"data":[{"id":1,"titre":"Dan la peau d''un developpeur back-end","description":"Moustapha FEKOTAN \u00e0 la conqu\u00eate des apis.","date_sortie":"2025-08-03","categorie_id":1,"user_id":3,"slug":"f3a99050-2b6e-47df-9dfb-3479a0b89e31","created_at":"2025-08-04T01:40:17.000000Z","updated_at":"2025-08-04T01:40:17.000000Z"}],"first_page_url":"http:\/\/localhost\/api\/recherche\/livre?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/recherche\/livre?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost\/api\/recherche\/livre?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/recherche\/livre","per_page":10,"prev_page_url":null,"to":1,"total":1}'
+        content: '{"current_page":1,"data":[{"id":1,"titre":"Dan la peau d''un developpeur back-end","description":"Moustapha FEKOTAN \u00e0 la conqu\u00eate des apis.","date_sortie":"2025-08-03","categorie_id":1,"user_id":3,"slug":"f3a99050-2b6e-47df-9dfb-3479a0b89e31","created_at":"2025-08-04T01:40:17.000000Z","updated_at":"2025-08-04T01:40:17.000000Z"}],"first_page_url":"http:\/\/localhost\/api\/recherche\/livre?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost\/api\/recherche\/livre?page=1","links":[{"url":null,"label":"&laquo; Pr\u00e9c\u00e9dent","active":false},{"url":"http:\/\/localhost\/api\/recherche\/livre?page=1","label":"1","active":true},{"url":null,"label":"Suivant &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/localhost\/api\/recherche\/livre","per_page":10,"prev_page_url":null,"to":1,"total":1}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/register
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/login
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'Must be a valid email address.'
-        required: true
-        example: qkunze@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      password:
-        name: password
-        description: ''
-        required: true
-        example: 'O[2UZ5ij-e/dl4m{o,'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      remember_me:
-        name: remember_me
-        description: ''
-        required: false
-        example: false
-        type: boolean
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      email: qkunze@example.com
-      password: 'O[2UZ5ij-e/dl4m{o,'
-      remember_me: false
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/logout
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/email/verify/{id}/{hash}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the verify.'
-        required: true
-        example: consequatur
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      hash:
-        name: hash
-        description: ''
-        required: true
-        example: consequatur
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: consequatur
-      hash: consequatur
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/email/verification-notification
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/forgot-password
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/reset-password
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      deprecated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
     responseFields: []
     auth: []
     controller: null
