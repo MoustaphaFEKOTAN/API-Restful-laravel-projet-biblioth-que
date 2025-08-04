@@ -66,11 +66,22 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      role_id:
+        name: role_id
+        description: 'ID du rôle attribué à l’utilisateur. Ce champ est une clé étrangère liée à la table `roles`. Exemple: 2'
+        required: true
+        example: 17
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
     cleanBodyParameters:
       name: consequatur
       email: qkunze@example.com
       password: 'O[2UZ5ij-e/dl4m{o,'
       password_confirmation: consequatur
+      role_id: 17
     fileParameters: []
     responses:
       -
@@ -81,7 +92,8 @@ endpoints:
             "user": {
               "id": 1,
               "name": "Jean Dupont",
-              "email": "jean@example.com"
+              "email": "jean@example.com",
+             "role_id": 1
             }
           }
         headers: []
@@ -142,7 +154,7 @@ endpoints:
         name: remember_me
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -151,7 +163,7 @@ endpoints:
     cleanBodyParameters:
       email: qkunze@example.com
       password: 'O[2UZ5ij-e/dl4m{o,'
-      remember_me: true
+      remember_me: false
     fileParameters: []
     responses:
       -

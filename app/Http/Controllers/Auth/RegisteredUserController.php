@@ -26,13 +26,15 @@ class RegisteredUserController extends Controller
  * @bodyParam email string required Email valide. Exemple: jean@example.com
  * @bodyParam password string required Le mot de passe (minimum 8 caractères). Exemple: secret123
  * @bodyParam password_confirmation string required Confirmation du mot de passe. Exemple: secret123
+ * @bodyParam role_id integer required ID du rôle attribué à l’utilisateur. Ce champ est une clé étrangère liée à la table `roles`. Exemple: 2
  *
  * @response 201 {
  *   "message": "Inscription réussie, vérifiez votre e-mail.",
  *   "user": {
  *     "id": 1,
  *     "name": "Jean Dupont",
- *     "email": "jean@example.com"
+ *     "email": "jean@example.com",
+ *    "role_id": 1
  *   }
  * }
  */

@@ -599,7 +599,7 @@ endpoints:
         name: date_sortie
         description: "Le champ value n'est pas une date valide."
         required: true
-        example: '2025-08-04T23:16:17'
+        example: '2025-08-04T23:27:20'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -618,7 +618,7 @@ endpoints:
     cleanBodyParameters:
       titre: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      date_sortie: '2025-08-04T23:16:17'
+      date_sortie: '2025-08-04T23:27:20'
       categorie_id: consequatur
     fileParameters: []
     responses: []
@@ -685,7 +685,7 @@ endpoints:
         name: date_sortie
         description: "Le champ value n'est pas une date valide."
         required: false
-        example: '2025-08-04T23:16:17'
+        example: '2025-08-04T23:27:20'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -704,7 +704,7 @@ endpoints:
     cleanBodyParameters:
       titre: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      date_sortie: '2025-08-04T23:16:17'
+      date_sortie: '2025-08-04T23:27:20'
     fileParameters: []
     responses: []
     responseFields: []
