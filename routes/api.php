@@ -123,6 +123,26 @@ Route::post('/reset-password', function (Request $request) {
 });
 
 
+//Modification de mot de passe lorsqu'on est déjà connecté
+Route::middleware('auth:sanctum')->post('/change-password', function (Request $request) {
+    $request->validate([
+        'current_password' => ['required'],
+        'new_password' => ['required', 'string', 'min:8', 'confirmed'], // nécessite aussi new_password_confirmation
+    ]);
+
+    $user = $request->user();
+
+    if (!Hash::check($request->current_password, $user->password)) {
+        return response()->json(['message' => 'Mot de passe actuel incorrect.'], 403);
+    }
+
+    $user->password = Hash::make($request->new_password);
+    $user->save();
+
+    return response()->json(['message' => 'Mot de passe mis à jour avec succès.']);
+});
+
+
 // --------------------------------------------------------------------------------------------------------------------------------
 
 // liste des role a envoyé au formulaire d'inscription 
