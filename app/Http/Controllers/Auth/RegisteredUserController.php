@@ -22,11 +22,11 @@ class RegisteredUserController extends Controller
  *
  * Ce endpoint permet à un utilisateur de s’inscrire.
  *
- * @bodyParam name string required Le nom de l’utilisateur. Exemple: Jean Dupont
- * @bodyParam email string required Email valide. Exemple: jean@example.com
- * @bodyParam password string required Le mot de passe (minimum 8 caractères). Exemple: secret123
- * @bodyParam password_confirmation string required Confirmation du mot de passe. Exemple: secret123
- * @bodyParam role_id integer required ID du rôle attribué à l’utilisateur. Ce champ est une clé étrangère liée à la table `roles`. Exemple: 2
+ * @bodyParam name string required Le nom de l’utilisateur.
+ * @bodyParam email string required Email valide. 
+ * @bodyParam password string required Le mot de passe (minimum 8 caractères). 
+ * @bodyParam password_confirmation string required Confirmation du mot de passe. 
+ * @bodyParam role_id integer required ID du rôle attribué à l’utilisateur. Ce champ est une clé étrangère liée à la table `roles`. 
  *
  * @response 201 {
  *   "message": "Inscription réussie, vérifiez votre e-mail.",

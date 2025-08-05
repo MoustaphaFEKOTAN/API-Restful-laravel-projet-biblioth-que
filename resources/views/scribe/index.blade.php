@@ -392,7 +392,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="17"
                data-component="body">
     <br>
-<p>ID du rôle attribué à l’utilisateur. Ce champ est une clé étrangère liée à la table <code>roles</code>. Exemple: 2 Example: <code>17</code></p>
+<p>ID du rôle attribué à l’utilisateur. Ce champ est une clé étrangère liée à la table <code>roles</code>. Example: <code>17</code></p>
         </div>
         </form>
 
@@ -417,7 +417,7 @@ Ce endpoint permet à un utilisateur de se connecter.</h2>
     --data "{
     \"email\": \"qkunze@example.com\",
     \"password\": \"O[2UZ5ij-e\\/dl4m{o,\",
-    \"remember_me\": true
+    \"remember_me\": false
 }"
 </code></pre></div>
 
@@ -435,7 +435,7 @@ const headers = {
 let body = {
     "email": "qkunze@example.com",
     "password": "O[2UZ5ij-e\/dl4m{o,",
-    "remember_me": true
+    "remember_me": false
 };
 
 fetch(url, {
@@ -581,7 +581,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -2911,7 +2911,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-04T23:36:53\",
+    \"date_sortie\": \"2025-08-04T23:44:34\",
     \"categorie_id\": \"consequatur\"
 }"
 </code></pre></div>
@@ -2930,7 +2930,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-04T23:36:53",
+    "date_sortie": "2025-08-04T23:44:34",
     "categorie_id": "consequatur"
 };
 
@@ -3042,10 +3042,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="POSTapi-livres-store"
-               value="2025-08-04T23:36:53"
+               value="2025-08-04T23:44:34"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:36:53</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:44:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3079,7 +3079,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-04T23:36:53\"
+    \"date_sortie\": \"2025-08-04T23:44:34\"
 }"
 </code></pre></div>
 
@@ -3097,7 +3097,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-04T23:36:53"
+    "date_sortie": "2025-08-04T23:44:34"
 };
 
 fetch(url, {
@@ -3220,10 +3220,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="PUTapi-livres--slug-"
-               value="2025-08-04T23:36:53"
+               value="2025-08-04T23:44:34"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:36:53</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:44:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;

@@ -18,8 +18,8 @@ class AuthenticatedSessionController extends Controller
  *
  * Ce endpoint permet à un utilisateur de se connecter.
  *
- * @bodyParam email string required L’adresse email. Exemple: jean@example.com
- * @bodyParam password string required Le mot de passe. Exemple: secret123
+ * @bodyParam email string required L’adresse email. 
+ * @bodyParam password string required Le mot de passe. 
  *
  * @response 200 {
  *   "access_token": "token-sanctum-ici",
