@@ -168,12 +168,11 @@ Route::post('/forgot-password', function (Request $request) {
  *
  * Réinitialiser le mot de passe
  *
- * Réinitialise le mot de passe via le token reçu par e-mail.
  *
- * @bodyParam email string required Email de l’utilisateur. Exemple: jean@example.com
- * @bodyParam token string required Le token de réinitialisation. Exemple: abc123
- * @bodyParam password string required Nouveau mot de passe. Exemple: newpass456
- * @bodyParam password_confirmation string required Confirmation. Exemple: newpass456
+ * @bodyParam email string required Email de l’utilisateur. 
+ * @bodyParam token string required Le token de réinitialisation. 
+ * @bodyParam password string required Nouveau mot de passe.
+ * @bodyParam password_confirmation string required Confirmation. 
  *
  * @response 200 {
  *   "message": "Mot de passe réinitialisé avec succès"

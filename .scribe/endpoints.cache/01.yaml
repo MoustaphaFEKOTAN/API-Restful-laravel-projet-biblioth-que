@@ -156,7 +156,7 @@ endpoints:
         name: remember_me
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -165,7 +165,7 @@ endpoints:
     cleanBodyParameters:
       email: qkunze@example.com
       password: 'O[2UZ5ij-e/dl4m{o,'
-      remember_me: true
+      remember_me: false
     fileParameters: []
     responses:
       -
@@ -418,10 +418,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: |-
-        Réinitialiser le mot de passe
-
-        Réinitialise le mot de passe via le token reçu par e-mail.
+      title: 'Réinitialiser le mot de passe'
       description: ''
       authenticated: false
       deprecated: false
@@ -436,7 +433,7 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: 'Email de l’utilisateur. Exemple: jean@example.com'
+        description: 'Email de l’utilisateur.'
         required: true
         example: qkunze@example.com
         type: string
@@ -446,7 +443,7 @@ endpoints:
         custom: []
       token:
         name: token
-        description: 'Le token de réinitialisation. Exemple: abc123'
+        description: 'Le token de réinitialisation.'
         required: true
         example: consequatur
         type: string
@@ -456,7 +453,7 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'Nouveau mot de passe. Exemple: newpass456'
+        description: 'Nouveau mot de passe.'
         required: true
         example: 'O[2UZ5ij-e/dl4m{o,'
         type: string
@@ -466,7 +463,7 @@ endpoints:
         custom: []
       password_confirmation:
         name: password_confirmation
-        description: 'Confirmation. Exemple: newpass456'
+        description: Confirmation.
         required: true
         example: consequatur
         type: string
