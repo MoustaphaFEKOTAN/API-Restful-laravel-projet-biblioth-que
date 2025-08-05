@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\Fortify\ResetUserPassword;
+use App\Actions\Fortify\UpdateUserPassword;
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolesController;
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
@@ -190,7 +193,9 @@ Route::post('/reset-password', function (Request $request) {
     $status = Password::reset(
     $request->only('email', 'password', 'password_confirmation', 'token'),
    function ($user, $password) use ($request) {
-        app(\App\Actions\Fortify\ResetUserPassword::class)->reset($user,  $request->all());
+
+    //Appel de fortify
+        app(ResetUserPassword::class)->reset($user,  $request->all());
     }
 );
 
@@ -207,21 +212,17 @@ Route::post('/reset-password', function (Request $request) {
  */
 //Modification de mot de passe lorsqu'on est déjà connecté
 Route::middleware('auth:sanctum')->post('/change-password', function (Request $request) {
-    $request->validate([
-        'current_password' => ['required'],
-        'new_password' => ['required', 'string', 'min:8', 'confirmed'], // nécessite aussi new_password_confirmation
-    ]);
+    try {
+        app(UpdateUserPassword::class)->update($request->user(), $request->all());
 
-    $user = $request->user();
-
-    if (!Hash::check($request->current_password, $user->password)) {
-        return response()->json(['message' => 'Mot de passe actuel incorrect.'], 403);
+        return response()->json([
+            'message' => 'Mot de passe mis à jour avec succès.'
+        ]);
+    } catch (ValidationException $e) {
+        return response()->json([
+            'errors' => $e->errors()
+        ], 422);
     }
-
-    $user->password = Hash::make($request->new_password);
-    $user->save();
-
-    return response()->json(['message' => 'Mot de passe mis à jour avec succès.']);
 });
 
 
