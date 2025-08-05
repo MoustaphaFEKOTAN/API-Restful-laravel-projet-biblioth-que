@@ -18,9 +18,12 @@ class CategorieController extends Controller
 }
 
 
-    /**
-     * Store a newly created resource in storage.
-     */
+ /**
+ * 
+ * 
+ * @authenticated
+ */
+   
    public function store(Request $request)
 {
     $request->validate([
@@ -40,9 +43,12 @@ class CategorieController extends Controller
 }
 
 
-    /**
-     * Display the specified resource.
-     */
+   
+     /**
+ * 
+ * 
+ * @authenticated
+ */
   public function show($slug)
 {
     $categorie = Categories::where('slug', $slug)->firstOrFail();
@@ -52,6 +58,7 @@ class CategorieController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *  @authenticated
      */
   public function update(Request $request, $slug)
 {
@@ -75,6 +82,7 @@ class CategorieController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *  @authenticated
      */
    public function destroy($slug)
 {

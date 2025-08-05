@@ -203,7 +203,9 @@ Route::post('/reset-password', function (Request $request) {
         : response()->json(['message' => __($status)], 400);
 });
 
-
+/** @authenticated
+ * 
+ */
 //Modification de mot de passe lorsqu'on est déjà connecté
 Route::middleware('auth:sanctum')->post('/change-password', function (Request $request) {
     $request->validate([

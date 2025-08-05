@@ -102,11 +102,10 @@ return [
 
     // How is your API authenticated? This information will be used in the displayed docs, generated examples and response calls.
     'auth' => [
-        // Set this to true if ANY endpoints in your API use authentication.
-        'enabled' => false,
+        // En mettant cette valeure a true , les routes avec l'annotation  @authenticated seul sont activé
+        'enabled' => true,
 
-        // Set this to true if your API should be authenticated by default. If so, you must also set `enabled` (above) to true.
-        // You can then use @unauthenticated or @authenticated on individual endpoints to change their status from the default.
+        // En mettant la valeure a true , toute l'api sera automatiuement vérouillé et il faudra utuliser l'annotation @unauthenticated
         'default' => false,
 
         // Where is the auth value meant to be sent in a request?

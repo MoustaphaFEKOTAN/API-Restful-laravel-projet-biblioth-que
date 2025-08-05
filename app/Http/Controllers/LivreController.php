@@ -14,6 +14,11 @@ class LivreController extends Controller
         return Livres::with(['categorie', 'user'])->get();
     }
 
+ /**
+ * Ajouter un livre //Nom affiché dans l'onglet du doc
+ * 
+ * @authenticated
+ */
  public function store(Request $request)
 {
     $request->validate([
@@ -49,7 +54,11 @@ class LivreController extends Controller
     ]);
 }
 
-
+ /**
+ * 
+ * 
+ * @authenticated
+ */
 public function update(Request $request, $slug)
 {
     $livre = Livres::where('slug', $slug)->firstOrFail();
@@ -67,7 +76,11 @@ public function update(Request $request, $slug)
 }
 
 
-
+ /**
+ * 
+ * 
+ * @authenticated
+ */
     public function destroy($slug)
     {
         $livre = Livres::findOrFail($slug);
