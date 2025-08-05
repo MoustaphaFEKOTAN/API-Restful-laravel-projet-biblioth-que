@@ -28,7 +28,7 @@ endpoints:
     bodyParameters:
       name:
         name: name
-        description: 'Le nom de l’utilisateur. Exemple: Jean Dupont'
+        description: 'Le nom de l’utilisateur.'
         required: true
         example: consequatur
         type: string
@@ -38,7 +38,7 @@ endpoints:
         custom: []
       email:
         name: email
-        description: 'Email valide. Exemple: jean@example.com'
+        description: 'Email valide.'
         required: true
         example: qkunze@example.com
         type: string
@@ -48,7 +48,7 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'Le mot de passe (minimum 8 caractères). Exemple: secret123'
+        description: 'Le mot de passe (minimum 8 caractères).'
         required: true
         example: 'O[2UZ5ij-e/dl4m{o,'
         type: string
@@ -58,7 +58,7 @@ endpoints:
         custom: []
       password_confirmation:
         name: password_confirmation
-        description: 'Confirmation du mot de passe. Exemple: secret123'
+        description: 'Confirmation du mot de passe.'
         required: true
         example: consequatur
         type: string
@@ -132,7 +132,7 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: 'L’adresse email. Exemple: jean@example.com'
+        description: 'L’adresse email.'
         required: true
         example: qkunze@example.com
         type: string
@@ -142,7 +142,7 @@ endpoints:
         custom: []
       password:
         name: password
-        description: 'Le mot de passe. Exemple: secret123'
+        description: 'Le mot de passe.'
         required: true
         example: 'O[2UZ5ij-e/dl4m{o,'
         type: string
@@ -154,7 +154,7 @@ endpoints:
         name: remember_me
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -163,7 +163,7 @@ endpoints:
     cleanBodyParameters:
       email: qkunze@example.com
       password: 'O[2UZ5ij-e/dl4m{o,'
-      remember_me: false
+      remember_me: true
     fileParameters: []
     responses:
       -

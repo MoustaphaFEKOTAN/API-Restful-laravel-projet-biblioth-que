@@ -175,7 +175,7 @@ Réinitialise le mot de passe via le token reçu par e-mail.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 4, 2025</li>
+        <li>Last updated: August 5, 2025</li>
     </ul>
 </div>
 
@@ -186,10 +186,10 @@ Réinitialise le mot de passe via le token reçu par e-mail.</a>
 <aside>
     <strong>Base URL</strong>: <code>http://localhost</code>
 </aside>
-<pre><code>This documentation aims to provide all the information you need to work with our API.
+<pre><code>Cette documentation a pour but de fournir toutes les informations dont vous avez besoin pour travailler avec notre API.
 
-&lt;aside&gt;As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
-You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).&lt;/aside&gt;</code></pre>
+&lt;aside&gt;Au fur et à mesure que vous défilez, vous verrez des exemples de code permettant d'utiliser l'API dans différents langages de programmation dans la zone sombre à droite (ou dans le cadre du contenu sur mobile).
+Vous pouvez changer la langue utilisée à l'aide des onglets en haut à droite (ou à partir du menu de navigation en haut à gauche sur mobile).).&lt;/aside&gt;</code></pre>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
@@ -348,7 +348,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="consequatur"
                data-component="body">
     <br>
-<p>Le nom de l’utilisateur. Exemple: Jean Dupont Example: <code>consequatur</code></p>
+<p>Le nom de l’utilisateur. Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -359,7 +359,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="qkunze@example.com"
                data-component="body">
     <br>
-<p>Email valide. Exemple: jean@example.com Example: <code>qkunze@example.com</code></p>
+<p>Email valide. Example: <code>qkunze@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -370,7 +370,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="O[2UZ5ij-e/dl4m{o,"
                data-component="body">
     <br>
-<p>Le mot de passe (minimum 8 caractères). Exemple: secret123 Example: <code>O[2UZ5ij-e/dl4m{o,</code></p>
+<p>Le mot de passe (minimum 8 caractères). Example: <code>O[2UZ5ij-e/dl4m{o,</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password_confirmation</code></b>&nbsp;&nbsp;
@@ -381,7 +381,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="consequatur"
                data-component="body">
     <br>
-<p>Confirmation du mot de passe. Exemple: secret123 Example: <code>consequatur</code></p>
+<p>Confirmation du mot de passe. Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role_id</code></b>&nbsp;&nbsp;
@@ -417,7 +417,7 @@ Ce endpoint permet à un utilisateur de se connecter.</h2>
     --data "{
     \"email\": \"qkunze@example.com\",
     \"password\": \"O[2UZ5ij-e\\/dl4m{o,\",
-    \"remember_me\": false
+    \"remember_me\": true
 }"
 </code></pre></div>
 
@@ -435,7 +435,7 @@ const headers = {
 let body = {
     "email": "qkunze@example.com",
     "password": "O[2UZ5ij-e\/dl4m{o,",
-    "remember_me": false
+    "remember_me": true
 };
 
 fetch(url, {
@@ -549,7 +549,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="qkunze@example.com"
                data-component="body">
     <br>
-<p>L’adresse email. Exemple: jean@example.com Example: <code>qkunze@example.com</code></p>
+<p>L’adresse email. Example: <code>qkunze@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -560,7 +560,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="O[2UZ5ij-e/dl4m{o,"
                data-component="body">
     <br>
-<p>Le mot de passe. Exemple: secret123 Example: <code>O[2UZ5ij-e/dl4m{o,</code></p>
+<p>Le mot de passe. Example: <code>O[2UZ5ij-e/dl4m{o,</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>remember_me</code></b>&nbsp;&nbsp;
@@ -581,7 +581,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -1335,7 +1335,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+access-control-allow-origin: http://localhost:8000
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1588,7 +1588,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+access-control-allow-origin: http://localhost:8000
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1989,7 +1989,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+access-control-allow-origin: http://localhost:8000
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">[
@@ -2249,7 +2249,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+access-control-allow-origin: http://localhost:8000
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2650,7 +2650,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+access-control-allow-origin: http://localhost:8000
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">[
@@ -2801,7 +2801,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+access-control-allow-origin: http://localhost:8000
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2911,7 +2911,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-04T23:44:34\",
+    \"date_sortie\": \"2025-08-05T00:44:57\",
     \"categorie_id\": \"consequatur\"
 }"
 </code></pre></div>
@@ -2930,7 +2930,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-04T23:44:34",
+    "date_sortie": "2025-08-05T00:44:57",
     "categorie_id": "consequatur"
 };
 
@@ -3042,10 +3042,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="POSTapi-livres-store"
-               value="2025-08-04T23:44:34"
+               value="2025-08-05T00:44:57"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:44:34</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-05T00:44:57</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3079,7 +3079,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-04T23:44:34\"
+    \"date_sortie\": \"2025-08-05T00:44:57\"
 }"
 </code></pre></div>
 
@@ -3097,7 +3097,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-04T23:44:34"
+    "date_sortie": "2025-08-05T00:44:57"
 };
 
 fetch(url, {
@@ -3220,10 +3220,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="PUTapi-livres--slug-"
-               value="2025-08-04T23:44:34"
+               value="2025-08-05T00:44:57"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-04T23:44:34</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-05T00:44:57</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3403,7 +3403,7 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: *
+access-control-allow-origin: http://localhost:8000
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
