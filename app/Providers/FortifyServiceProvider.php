@@ -30,29 +30,11 @@ class FortifyServiceProvider extends ServiceProvider
     public function boot(): void
     {
 
-//         Fortify::ignoreRoutes(); // D'abord, ignorer les routes internes
 
-
-// Fortify::loginView(function () {
-//     abort(404);
-// });
-
-// Fortify::registerView(function () {
-//     abort(404);
-// });
-
-// Fortify::requestPasswordResetLinkView(function () {
-//     abort(404);
-// });
-
-// Fortify::resetPasswordView(function () {
-//     abort(404);
-// });
-
-        Fortify::createUsersUsing(CreateNewUser::class);
-        Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
-        Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-        Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        Fortify::createUsersUsing(CreateNewUser::class); //Inscription
+        Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class); //Mise à jour infos user
+        Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);//Changement mot de passe
+        Fortify::resetUserPasswordsUsing(ResetUserPassword::class); //Mot de passe oublié ?
         Fortify::redirectUserForTwoFactorAuthenticationUsing(RedirectIfTwoFactorAuthenticatable::class);
 
         RateLimiter::for('login', function (Request $request) {

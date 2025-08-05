@@ -186,22 +186,21 @@ Route::post('/reset-password', function (Request $request) {
         'password' => 'required|confirmed|min:8',
     ]);
 
-    $status = Password::reset(
-        $request->only('email', 'password', 'password_confirmation', 'token'),
-        function ($user, $password) {
-            $user->forceFill([
-                'password' => Hash::make($password),
-                'remember_token' => Str::random(60), //Mettre a jour le remember_me pour invalidé toute autre section active
-            ])->save();
 
-            event(new PasswordReset($user));
-        }
-    );
+    $status = Password::reset(
+    $request->only('email', 'password', 'password_confirmation', 'token'),
+   function ($user, $password) use ($request) {
+        app(\App\Actions\Fortify\ResetUserPassword::class)->reset($user,  $request->all());
+    }
+);
+
 
     return $status === Password::PASSWORD_RESET
         ? response()->json(['message' => 'Mot de passe réinitialisé avec succès.'])
         : response()->json(['message' => __($status)], 400);
 });
+
+
 
 /** @authenticated
  * 
