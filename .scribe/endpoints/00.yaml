@@ -634,8 +634,8 @@ endpoints:
         name: categorie_id
         description: 'The <code>id</code> of an existing record in the categories table.'
         required: true
-        example: consequatur
-        type: string
+        example: 1
+        type: id
         enumValues: []
         exampleWasSpecified: false
         nullable: false
