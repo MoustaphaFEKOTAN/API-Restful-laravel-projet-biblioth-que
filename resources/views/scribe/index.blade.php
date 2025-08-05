@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://localhost";
+        var tryItOutBaseUrl = "http://127.0.0.1:8000";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -184,7 +184,7 @@ Réinitialise le mot de passe via le token reçu par e-mail.</a>
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>http://127.0.0.1:8000</code>
 </aside>
 <pre><code>Cette documentation a pour but de fournir toutes les informations dont vous avez besoin pour travailler avec notre API.
 
@@ -1335,7 +1335,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: http://localhost:8000
+access-control-allow-origin: *
+access-control-expose-headers: Authorization
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1588,7 +1589,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: http://localhost:8000
+access-control-allow-origin: *
+access-control-expose-headers: Authorization
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1989,7 +1991,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: http://localhost:8000
+access-control-allow-origin: *
+access-control-expose-headers: Authorization
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">[
@@ -2249,7 +2252,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: http://localhost:8000
+access-control-allow-origin: *
+access-control-expose-headers: Authorization
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2650,7 +2654,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: http://localhost:8000
+access-control-allow-origin: *
+access-control-expose-headers: Authorization
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">[
@@ -2801,7 +2806,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: http://localhost:8000
+access-control-allow-origin: *
+access-control-expose-headers: Authorization
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2911,7 +2917,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-05T00:44:57\",
+    \"date_sortie\": \"2025-08-05T02:57:34\",
     \"categorie_id\": \"consequatur\"
 }"
 </code></pre></div>
@@ -2930,7 +2936,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-05T00:44:57",
+    "date_sortie": "2025-08-05T02:57:34",
     "categorie_id": "consequatur"
 };
 
@@ -3042,10 +3048,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="POSTapi-livres-store"
-               value="2025-08-05T00:44:57"
+               value="2025-08-05T02:57:34"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-05T00:44:57</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-05T02:57:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3079,7 +3085,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-05T00:44:57\"
+    \"date_sortie\": \"2025-08-05T02:57:34\"
 }"
 </code></pre></div>
 
@@ -3097,7 +3103,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-05T00:44:57"
+    "date_sortie": "2025-08-05T02:57:34"
 };
 
 fetch(url, {
@@ -3220,10 +3226,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="PUTapi-livres--slug-"
-               value="2025-08-05T00:44:57"
+               value="2025-08-05T02:57:34"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-05T00:44:57</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-05T02:57:34</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3403,7 +3409,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-access-control-allow-origin: http://localhost:8000
+access-control-allow-origin: *
+access-control-expose-headers: Authorization
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{

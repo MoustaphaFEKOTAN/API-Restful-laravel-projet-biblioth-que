@@ -3,7 +3,7 @@
 
 
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>http://127.0.0.1:8000</code>
 </aside>
 
     Cette documentation a pour but de fournir toutes les informations dont vous avez besoin pour travailler avec notre API.

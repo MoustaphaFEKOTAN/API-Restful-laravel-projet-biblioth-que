@@ -34,7 +34,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: 'http://localhost:8000'
+          access-control-allow-origin: '*'
+          access-control-expose-headers: Authorization
         description: null
         custom: []
     responseFields: []
@@ -127,7 +128,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: 'http://localhost:8000'
+          access-control-allow-origin: '*'
+          access-control-expose-headers: Authorization
         description: null
         custom: []
     responseFields: []
@@ -263,7 +265,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: 'http://localhost:8000'
+          access-control-allow-origin: '*'
+          access-control-expose-headers: Authorization
         description: null
         custom: []
     responseFields: []
@@ -356,7 +359,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: 'http://localhost:8000'
+          access-control-allow-origin: '*'
+          access-control-expose-headers: Authorization
         description: null
         custom: []
     responseFields: []
@@ -492,7 +496,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: 'http://localhost:8000'
+          access-control-allow-origin: '*'
+          access-control-expose-headers: Authorization
         description: null
         custom: []
     responseFields: []
@@ -546,7 +551,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: 'http://localhost:8000'
+          access-control-allow-origin: '*'
+          access-control-expose-headers: Authorization
         description: null
         custom: []
     responseFields: []
@@ -601,7 +607,7 @@ endpoints:
         name: date_sortie
         description: "Le champ value n'est pas une date valide."
         required: true
-        example: '2025-08-05T00:44:57'
+        example: '2025-08-05T02:57:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -620,7 +626,7 @@ endpoints:
     cleanBodyParameters:
       titre: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      date_sortie: '2025-08-05T00:44:57'
+      date_sortie: '2025-08-05T02:57:34'
       categorie_id: consequatur
     fileParameters: []
     responses: []
@@ -687,7 +693,7 @@ endpoints:
         name: date_sortie
         description: "Le champ value n'est pas une date valide."
         required: false
-        example: '2025-08-05T00:44:57'
+        example: '2025-08-05T02:57:34'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -706,7 +712,7 @@ endpoints:
     cleanBodyParameters:
       titre: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      date_sortie: '2025-08-05T00:44:57'
+      date_sortie: '2025-08-05T02:57:34'
     fileParameters: []
     responses: []
     responseFields: []
@@ -788,7 +794,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          access-control-allow-origin: 'http://localhost:8000'
+          access-control-allow-origin: '*'
+          access-control-expose-headers: Authorization
         description: null
         custom: []
     responseFields: []
