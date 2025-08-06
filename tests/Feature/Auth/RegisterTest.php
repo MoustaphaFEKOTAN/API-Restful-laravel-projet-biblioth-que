@@ -3,7 +3,6 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\Roles;
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -14,7 +13,7 @@ class RegisterTest extends TestCase
 #[\PHPUnit\Framework\Attributes\Test]
 public function a_user_can_register_with_valid_data()
 {
-    // Arrange: créer un rôle factice
+    // créer un rôle factice
     $role = Roles::factory()->create([
         'nom' => 'lecteur', // ou auteur selon ton cas
     ]);
