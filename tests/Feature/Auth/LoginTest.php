@@ -4,13 +4,17 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
 {
-    use RefreshDatabase;
+    /**
+     * A basic feature test example.
+     */
+ 
 
-
+#[\PHPUnit\Framework\Attributes\Test]
     public function a_user_can_login_with_valid_credentials()
     {
         
@@ -24,7 +28,7 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertStatus(200)
-                 ->assertJsonStructure(['token', 'token_type']);
+                 ->assertJsonStructure(['access_token', 'token_type']);
     }
 
    
@@ -41,3 +45,5 @@ class LoginTest extends TestCase
                  ->assertJson(['message' => 'Les informations d’identification sont invalides.']);
     }
 }
+
+

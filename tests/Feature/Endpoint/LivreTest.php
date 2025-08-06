@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Endpoint;
 
 use App\Models\Livre;
 use App\Models\Livres;
@@ -22,7 +22,7 @@ class LivreTest extends TestCase
         $this->user = User::factory()->create();
     }
 
-    /** @test */
+  #[\PHPUnit\Framework\Attributes\Test]
     public function it_lists_livres()
     {
         Livres::factory()->count(3)->create();
@@ -33,7 +33,7 @@ class LivreTest extends TestCase
                  ->assertJsonCount(3, 'data'); // selon ta structure JSON
     }
 
-    /** @test */
+  #[\PHPUnit\Framework\Attributes\Test]
     public function authenticated_user_can_create_livre()
     {
         $livreData = [
@@ -52,7 +52,7 @@ class LivreTest extends TestCase
         $this->assertDatabaseHas('livres', ['titre' => 'Nouveau livre']);
     }
 
-    /** @test */
+#[\PHPUnit\Framework\Attributes\Test]
     public function it_shows_a_single_livre()
     {
         $livre = Livres::factory()->create();
@@ -63,7 +63,7 @@ class LivreTest extends TestCase
                  ->assertJsonFragment(['id' => $livre->id]);
     }
 
-    /** @test */
+   #[\PHPUnit\Framework\Attributes\Test]
     public function authenticated_user_can_update_livre()
     {
         $livre = Livres::factory()->create();
@@ -82,7 +82,7 @@ class LivreTest extends TestCase
         $this->assertDatabaseHas('livres', ['id' => $livre->id, 'titre' => 'Titre modifié']);
     }
 
-
+ #[\PHPUnit\Framework\Attributes\Test]
     public function authenticated_user_can_delete_livre()
     {
         $livre = Livres::factory()->create();
