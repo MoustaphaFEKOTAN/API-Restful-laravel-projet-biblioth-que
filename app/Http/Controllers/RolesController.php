@@ -17,9 +17,11 @@ class RolesController extends Controller
         return response()->json($roles);
     }
 
-    /**
-     * Crée un nouveau rôle.
-     */
+     /**
+ * 
+ * Créer un nouveau role
+ * @authenticated
+ */
     public function store(Request $request)
     {
         $request->validate([
@@ -34,18 +36,22 @@ class RolesController extends Controller
         return response()->json(['message' => 'Rôle créé avec succès'], 201);
     }
 
-    /**
-     * Affiche un rôle spécifique via son slug.
-     */
+   /**
+ * 
+ * 
+ * @authenticated
+ */
     public function show($slug)
     {
         $role = Roles::where('slug', $slug)->firstOrFail();
         return response()->json($role);
     }
 
-    /**
-     * Met à jour un rôle existant.
-     */
+  /**
+ * 
+ * 
+ * @authenticated
+ */
     public function update(Request $request, $slug)
     {
         $role = Roles::where('slug', $slug)->firstOrFail();
@@ -63,9 +69,11 @@ class RolesController extends Controller
         return response()->json(['message' => 'Mise à jour effectuée']);
     }
 
-    /**
-     * Supprime un rôle.
-     */
+  /**
+ * 
+ * 
+ * @authenticated
+ */
     public function destroy($slug)
     {
         $role = Roles::where('slug', $slug)->firstOrFail();

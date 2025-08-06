@@ -15,6 +15,29 @@ class RegisteredUserController extends Controller
     {
         $this->creator = $creator;
     }
+/**
+ * @group Authentification
+ *
+ * Inscription d’un utilisateur
+ *
+ * Ce endpoint permet à un utilisateur de s’inscrire.
+ *
+ * @bodyParam name string required Le nom de l’utilisateur.
+ * @bodyParam email string required Email valide. 
+ * @bodyParam password string required Le mot de passe (minimum 8 caractères). 
+ * @bodyParam password_confirmation string required Confirmation du mot de passe. 
+ * @bodyParam role_id integer required ID du rôle attribué à l’utilisateur. Ce champ est une clé étrangère liée à la table `roles`. 
+ *
+ * @response 201 {
+ *   "message": "Inscription réussie, vérifiez votre e-mail.",
+ *   "user": {
+ *     "id": 1,
+ *     "name": "Jean Dupont",
+ *     "email": "jean@example.com",
+ *    "role_id": 1
+ *   }
+ * }
+ */
 
     public function store(Request $request)
     {

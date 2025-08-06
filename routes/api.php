@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\Fortify\ResetUserPassword;
+use App\Actions\Fortify\UpdateUserPassword;
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolesController;
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 // --------------------------------------------------------------------------------------------------------------------------------
 
@@ -53,6 +56,20 @@ Route::get('/recherche/livre', [LivreController::class, 'recherche'])->name('api
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
+/**
+ * @group Authentification
+ *
+ * Déconnexion
+ *
+ * Ce endpoint permet à un utilisateur authentifié de se déconnecter (invalider le token).
+ *
+ * @authenticated
+ *
+ * @response 200 {
+ *   "message": "Déconnexion réussie"
+ * }
+ */
+
 Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
     $request->user()->currentAccessToken()->delete();
 
@@ -63,6 +80,20 @@ Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
 
 
 
+/**
+ * @group Authentification
+ *
+ * Vérification de l’e-mail
+ *
+ * Ce endpoint valide l’e-mail de l’utilisateur via un lien.
+ *
+ * @urlParam id integer required ID de l’utilisateur. Exemple: 1
+ * @urlParam hash string required Hash de vérification. Exemple: abcd1234
+ *
+ * @response 200 {
+ *   "message": "Email vérifié avec succès"
+ * }
+ */
 
 
 // ✅ Vérifier l’e-mail via le lien
@@ -70,6 +101,21 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill(); // Marque l’e-mail comme vérifié
     return response()->json(['message' => 'Email vérifié avec succès.']);
 })->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
+
+
+/**
+ * @group Authentification
+ *
+ * Renvoyer le lien de vérification
+ *
+ * Ce endpoint renvoie un e-mail de vérification à l’utilisateur connecté.
+ *
+ * @authenticated
+ *
+ * @response 200 {
+ *   "message": "Lien de vérification renvoyé"
+ * }
+ */
 
 // ✅ Renvoyer le lien de vérification
 Route::post('/email/verification-notification', function (Request $request) {
@@ -84,6 +130,19 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 
+/**
+ * @group Authentification
+ *
+ * Demande de réinitialisation du mot de passe
+ *
+ * Envoie un lien de réinitialisation du mot de passe à l’e-mail fourni.
+ *
+ * @bodyParam email string required Email de l’utilisateur. Exemple: jean@example.com
+ *
+ * @response 200 {
+ *   "message": "Lien envoyé"
+ * }
+ */
 
 //Mot de passe oublié(MAIL DE CHANGEMENT)
 Route::post('/forgot-password', function (Request $request) {
@@ -104,6 +163,21 @@ Route::post('/forgot-password', function (Request $request) {
         : response()->json(['message' => 'Impossible d\'envoyer le lien.'], 500);
 })->name('api.forgot-password');
 
+/**
+ * @group Authentification
+ *
+ * Réinitialiser le mot de passe
+ *
+ *
+ * @bodyParam email string required Email de l’utilisateur. 
+ * @bodyParam token string required Le token de réinitialisation. 
+ * @bodyParam password string required Nouveau mot de passe.
+ * @bodyParam password_confirmation string required Confirmation. 
+ *
+ * @response 200 {
+ *   "message": "Mot de passe réinitialisé avec succès"
+ * }
+ */
 
 
 //Nouveau de mot de passe 
@@ -114,17 +188,16 @@ Route::post('/reset-password', function (Request $request) {
         'password' => 'required|confirmed|min:8',
     ]);
 
-    $status = Password::reset(
-        $request->only('email', 'password', 'password_confirmation', 'token'),
-        function ($user, $password) {
-            $user->forceFill([
-                'password' => Hash::make($password),
-                'remember_token' => Str::random(60), //Mettre a jour le remember_me pour invalidé toute autre section active
-            ])->save();
 
-            event(new PasswordReset($user));
-        }
-    );
+    $status = Password::reset(
+    $request->only('email', 'password', 'password_confirmation', 'token'),
+   function ($user, $password) use ($request) {
+
+    //Appel de fortify
+        app(ResetUserPassword::class)->reset($user,  $request->all());
+    }
+);
+
 
     return $status === Password::PASSWORD_RESET
         ? response()->json(['message' => 'Mot de passe réinitialisé avec succès.'])
@@ -132,23 +205,23 @@ Route::post('/reset-password', function (Request $request) {
 });
 
 
+
+/** @authenticated
+ * 
+ */
 //Modification de mot de passe lorsqu'on est déjà connecté
 Route::middleware('auth:sanctum')->post('/change-password', function (Request $request) {
-    $request->validate([
-        'current_password' => ['required'],
-        'new_password' => ['required', 'string', 'min:8', 'confirmed'], // nécessite aussi new_password_confirmation
-    ]);
+    try {
+        app(UpdateUserPassword::class)->update($request->user(), $request->all());
 
-    $user = $request->user();
-
-    if (!Hash::check($request->current_password, $user->password)) {
-        return response()->json(['message' => 'Mot de passe actuel incorrect.'], 403);
+        return response()->json([
+            'message' => 'Mot de passe mis à jour avec succès.'
+        ]);
+    } catch (ValidationException $e) {
+        return response()->json([
+            'errors' => $e->errors()
+        ], 422);
     }
-
-    $user->password = Hash::make($request->new_password);
-    $user->save();
-
-    return response()->json(['message' => 'Mot de passe mis à jour avec succès.']);
 });
 
 
