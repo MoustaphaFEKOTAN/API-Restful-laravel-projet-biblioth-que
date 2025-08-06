@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -10,23 +11,29 @@ class RegisterTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function a_user_can_register_with_valid_data()
-    {
-        
-$response = $this->postJson('/api/register', [
-    'name' => 'John Doe',
-    'email' => 'john@example.com',
-    'password' => 'password',
-    'password_confirmation' => 'password',
-    'role_id' => 1, // ou un ID existant dans ta base
-]);
+#[\PHPUnit\Framework\Attributes\Test]
+public function a_user_can_register_with_valid_data()
+{
+    // Arrange: créer un rôle factice
+    $role = Roles::factory()->create([
+        'nom' => 'lecteur', // ou auteur selon ton cas
+    ]);
 
-        $response->assertStatus(200); 
-        $this->assertDatabaseHas('users', ['email' => 'john@example.com']);
-    }
+    // Act: appel à l’API
+    $response = $this->postJson('/api/register', [
+        'name' => 'John Doe',
+        'email' => 'john@example.com',
+        'password' => 'password',
+        'password_confirmation' => 'password',
+        'role_id' => $role->id,
+    ]);
 
-    /** @test */
+    // Assert: vérifie que tout est ok
+    $response->assertStatus(201); // ou 200
+    $this->assertDatabaseHas('users', ['email' => 'john@example.com']);
+}
+
+  
     public function it_fails_with_missing_fields()
     {
         $response = $this->postJson('/api/register', []);
