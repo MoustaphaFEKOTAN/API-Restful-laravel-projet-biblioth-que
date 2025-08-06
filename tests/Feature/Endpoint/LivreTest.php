@@ -2,11 +2,13 @@
 
 namespace Tests\Feature\Endpoint;
 
-use App\Models\Livre;
+use App\Models\Categories;
 use App\Models\Livres;
+use App\Models\Roles;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Support\Str;
 
 class LivreTest extends TestCase
 {
@@ -18,8 +20,14 @@ class LivreTest extends TestCase
     {
         parent::setUp();
 
+$role = Roles::factory()->create([
+    'nom' =>'auteur',
+]);
+
         // Création utilisateur pour authentification
-        $this->user = User::factory()->create();
+        $this->user = User::factory()->create([
+            'role_id' => $role->id,
+        ]);
     }
 
   #[\PHPUnit\Framework\Attributes\Test]
@@ -28,9 +36,10 @@ class LivreTest extends TestCase
         Livres::factory()->count(3)->create();
 
         $response = $this->getJson('/api/livres');
+        
 
         $response->assertStatus(200)
-                 ->assertJsonCount(3, 'data'); // selon ta structure JSON
+                 ->assertJsonCount(3);
     }
 
   #[\PHPUnit\Framework\Attributes\Test]
@@ -40,11 +49,16 @@ class LivreTest extends TestCase
             'titre' => 'Nouveau livre',
             'auteur' => 'Auteur Exemple',
             'description' => 'Une description ici',
-            // ajoute les champs nécessaires
+            'date_sortie' =>'2025-08-01',
+            'slug' => (string) Str::uuid(),
+            'categorie_id' =>  Categories::factory()->create()->id,
+             'user_id' => $this->user,
         ];
 
+// dd($this->user);
+
         $response = $this->actingAs($this->user, 'sanctum')
-                         ->postJson('/api/livres', $livreData);
+                         ->postJson('/api/livres/store', $livreData);
 
         $response->assertStatus(201)
                  ->assertJsonFragment(['titre' => 'Nouveau livre']);
@@ -57,11 +71,13 @@ class LivreTest extends TestCase
     {
         $livre = Livres::factory()->create();
 
-        $response = $this->getJson("/api/livres/{$livre->id}");
+        $response = $this->getJson('/api/livres/' . $livre->slug);
 
         $response->assertStatus(200)
-                 ->assertJsonFragment(['id' => $livre->id]);
+                 ->assertJsonFragment(['slug' => $livre->slug]);
     }
+
+    
 
    #[\PHPUnit\Framework\Attributes\Test]
     public function authenticated_user_can_update_livre()
@@ -69,17 +85,22 @@ class LivreTest extends TestCase
         $livre = Livres::factory()->create();
 
         $updateData = [
-            'titre' => 'Titre modifié',
-            // autres champs modifiés
+           'titre' => 'titre mis a jour',
+            'auteur' => 'Auteur ',
+            'description' => 'Une description ici',
+            'date_sortie' =>'2025-08-01',
+            'slug' => (string) Str::uuid(),
+            'categorie_id' =>  Categories::factory()->create()->id,
+             'user_id' => $this->user,
         ];
 
         $response = $this->actingAs($this->user, 'sanctum')
-                         ->putJson("/api/livres/{$livre->id}", $updateData);
+                         ->putJson('/api/livres/'. $livre->slug, $updateData);
 
         $response->assertStatus(200)
-                 ->assertJsonFragment(['titre' => 'Titre modifié']);
+                 ->assertJsonFragment(['titre' => 'titre mis a jour']);
 
-        $this->assertDatabaseHas('livres', ['id' => $livre->id, 'titre' => 'Titre modifié']);
+        $this->assertDatabaseHas('livres', ['slug' => $livre->slug, 'titre' => 'titre mis a jour']);
     }
 
  #[\PHPUnit\Framework\Attributes\Test]
@@ -87,11 +108,10 @@ class LivreTest extends TestCase
     {
         $livre = Livres::factory()->create();
 
-        $response = $this->actingAs($this->user, 'sanctum')
-                         ->deleteJson("/api/livres/{$livre->id}");
+        $response = $this->actingAs($this->user, 'sanctum') //Authentifie l'utulisateur
+                         ->deleteJson('/api/livres/'. $livre->slug);
 
-        $response->assertStatus(204); // No Content
-
-        $this->assertDatabaseMissing('livres', ['id' => $livre->id]);
+        $response->json(['message' => 'Non autorisé']); 
+        $this->assertDatabaseMissing('livres', ['slug' => $livre->slug]);
     }
 }

@@ -15,7 +15,7 @@ public function a_user_can_register_with_valid_data()
 {
     // créer un rôle factice
     $role = Roles::factory()->create([
-        'nom' => 'lecteur', // ou auteur selon ton cas
+        'nom' => 'lecteur', 
     ]);
 
     // Act: appel à l’API

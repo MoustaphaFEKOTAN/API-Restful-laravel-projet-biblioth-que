@@ -85,8 +85,11 @@ public function update(Request $request, $slug)
     {
         $livre = Livres::findOrFail($slug);
        if ($livre->user_id !== Auth::id()) {
+
     return response()->json(['message' => 'Non autorisé'], 403);
 }
+
+$livre->delete();
 
     }
 
