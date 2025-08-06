@@ -106,12 +106,14 @@ $role = Roles::factory()->create([
  #[\PHPUnit\Framework\Attributes\Test]
     public function authenticated_user_can_delete_livre()
     {
-        $livre = Livres::factory()->create();
+       $livre = Livres::factory()->create([
+        'user_id' => $this->user,
+    ]);
 
         $response = $this->actingAs($this->user, 'sanctum') //Authentifie l'utulisateur
                          ->deleteJson('/api/livres/'. $livre->slug);
 
-        $response->json(['message' => 'Non autorisé']); 
+        $response->assertStatus(200);
         $this->assertDatabaseMissing('livres', ['slug' => $livre->slug]);
     }
 }
