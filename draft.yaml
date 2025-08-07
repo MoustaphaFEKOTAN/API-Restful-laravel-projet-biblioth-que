@@ -1,0 +1,41 @@
+models:
+  Categorie:
+    nom: string
+
+  Role:
+    nom: string
+
+  User:
+    name: string
+    email: string
+    email_verified_at: timestamp nullable
+    password: string
+    role_id: id foreign
+    remember_token: string nullable
+
+controllers:
+  CategorieController:
+    index
+    show
+    store
+    update
+    destroy
+
+  RoleController:
+    index
+    show
+    store
+    update
+    destroy
+
+  UserController:
+    index
+    show
+    store
+    update
+    destroy
+
+  AuthController:
+    resetPassword
+    updatePassword
+    verifyEmail
