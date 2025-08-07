@@ -69,7 +69,7 @@ Ce projet est une API RESTful développée avec Laravel 11, utilisant Sanctum et
 
    - Exemple pour créer une factory Role :  
      ```bash
-     php artisan make:factory RoleFactory --model=Role
+     php artisan make:factory RoleFactory --model=Roles
      ```
 
 5. **Tests unitaires et feature**
