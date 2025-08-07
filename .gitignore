@@ -10,8 +10,10 @@
 .env.production
 .phpactor.json
 .phpunit.result.cache
+.blueprint
 Homestead.json
 Homestead.yaml
+draft.yaml
 auth.json
 npm-debug.log
 yarn-error.log

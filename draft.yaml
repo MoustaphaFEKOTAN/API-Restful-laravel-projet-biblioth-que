@@ -1,68 +1,67 @@
+routes:
+  api:
+    GET email/verify/{id}/{hash} verify:
+      uses: Auth/AuthenticatedSessionController@verifyEmail
+      middleware:
+        - "auth:sanctum"
+        - "signed"
+
+    POST email/verification-notification verification.send:
+      uses: Auth/AuthenticatedSessionController@sendVerificationEmail
+      middleware:
+        - "auth:sanctum"
+
+    POST forgot-password api.forgot-password:
+      uses: Auth/AuthenticatedSessionController@forgotPassword
+
+    POST reset-password api.reset-password:
+      uses: Auth/AuthenticatedSessionController@resetPassword
+
+    POST change-password api.change-password:
+      uses: Auth/AuthenticatedSessionController@changePassword
+      middleware:
+        - "auth:sanctum"
+
 controllers:
-  Auth/AuthenticatedSession:
-    methods:
-      verifyEmail:
-        uri: 'email/verify/{id}/{hash}'
-        method: get
-        name: verification.verify
-        middleware: ['auth:sanctum', 'signed']
-        request:
-          id: integer
-          hash: string
-        response: 200
+  RolesController:
+    index:
+      return: all
+    store:
+      validate:
+        - nom
+      save:
+        - nom
+    show:
+      find: id
+    update:
+      validate:
+        - nom
+      update:
+        - nom
+    destroy:
+      delete: role
 
-      sendVerificationEmail:
-        uri: 'email/verification-notification'
-        method: post
-        name: verification.send
-        middleware: ['auth:sanctum']
-        response: 200
-
-      forgotPassword:
-        uri: 'forgot-password'
-        method: post
-        name: api.forgot-password
-        request:
-          email: string email
-        response: 200
-
-      resetPassword:
-        uri: 'reset-password'
-        method: post
-        name: api.reset-password
-        request:
-          email: string email
-          token: string
-          password: string
-          password_confirmation: string
-        response: 200
-
-      changePassword:
-        uri: 'change-password'
-        method: post
-        name: api.change-password
-        middleware: ['auth:sanctum']
-        request:
-          current_password: string
-          password: string
-          password_confirmation: string
-        response: 200
-
-  Roles:
-    resource: api
-    model: Roles
-    middleware: ['auth:sanctum']
-
-  Categorie:
-    resource: api
-    model: Categories
-    middleware: ['auth:sanctum']
+  CategorieController:
+    index:
+      return: all
+    store:
+      validate:
+        - nom
+      save:
+        - nom
+    show:
+      find: id
+    update:
+      validate:
+        - nom
+      update:
+        - nom
+    destroy:
+      delete: categorie
 
 models:
   Roles:
     nom: string
-   
 
   Categories:
     nom: string
-   
