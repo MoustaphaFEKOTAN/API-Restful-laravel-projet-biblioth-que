@@ -106,7 +106,7 @@ Envoie un lien de réinitialisation du mot de passe à l’e-mail fourni.</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-categories">
-                                <a href="#endpoints-GETapi-categories">Display a listing of the resource.</a>
+                                <a href="#endpoints-GETapi-categories">GET api/categories</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-categories">
                                 <a href="#endpoints-POSTapi-categories">POST api/categories</a>
@@ -167,7 +167,7 @@ Envoie un lien de réinitialisation du mot de passe à l’e-mail fourni.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 5, 2025</li>
+        <li>Last updated: August 7, 2025</li>
     </ul>
 </div>
 
@@ -394,7 +394,7 @@ Ce endpoint permet à un utilisateur de se connecter.</h2>
     --data "{
     \"email\": \"qkunze@example.com\",
     \"password\": \"O[2UZ5ij-e\\/dl4m{o,\",
-    \"remember_me\": false
+    \"remember_me\": true
 }"
 </code></pre></div>
 
@@ -412,7 +412,7 @@ const headers = {
 let body = {
     "email": "qkunze@example.com",
     "password": "O[2UZ5ij-e\/dl4m{o,",
-    "remember_me": false
+    "remember_me": true
 };
 
 fetch(url, {
@@ -541,7 +541,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
         </form>
 
@@ -1042,8 +1042,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"qkunze@example.com\",
     \"token\": \"consequatur\",
+    \"email\": \"qkunze@example.com\",
     \"password\": \"O[2UZ5ij-e\\/dl4m{o,\",
     \"password_confirmation\": \"consequatur\"
 }"
@@ -1061,8 +1061,8 @@ const headers = {
 };
 
 let body = {
-    "email": "qkunze@example.com",
     "token": "consequatur",
+    "email": "qkunze@example.com",
     "password": "O[2UZ5ij-e\/dl4m{o,",
     "password_confirmation": "consequatur"
 };
@@ -1140,17 +1140,6 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="email"                data-endpoint="POSTapi-reset-password"
-               value="qkunze@example.com"
-               data-component="body">
-    <br>
-<p>Email de l’utilisateur. Example: <code>qkunze@example.com</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>token</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
@@ -1160,6 +1149,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Le token de réinitialisation. Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="email"                data-endpoint="POSTapi-reset-password"
+               value="qkunze@example.com"
+               data-component="body">
+    <br>
+<p>Email de l’utilisateur. Example: <code>qkunze@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1189,9 +1189,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
     
 
-                                <h2 id="endpoints-GETapi-categories">Display a listing of the resource.</h2>
+                                <h2 id="endpoints-GETapi-categories">GET api/categories</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
 
@@ -1203,6 +1204,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://127.0.0.1:8000/api/categories" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1213,6 +1215,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1259,7 +1262,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-categories" data-method="GET"
       data-path="api/categories"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -1272,6 +1275,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <b><code>api/categories</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Authorization" class="auth-value"               data-endpoint="GETapi-categories"
+               value="Bearer {YOUR_AUTH_KEY}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
+            </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
 &nbsp;
@@ -1836,12 +1850,16 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">[
     {
-        &quot;id&quot;: 1,
+        &quot;id&quot;: 4,
         &quot;nom&quot;: &quot;auteur&quot;
     },
     {
-        &quot;id&quot;: 2,
+        &quot;id&quot;: 5,
         &quot;nom&quot;: &quot;lecteur&quot;
+    },
+    {
+        &quot;id&quot;: 6,
+        &quot;nom&quot;: &quot;consequatur&quot;
     }
 ]</code>
  </pre>
@@ -2469,58 +2487,33 @@ access-control-allow-origin: *
 <code class="language-json" style="max-height: 300px;">[
     {
         &quot;id&quot;: 1,
-        &quot;titre&quot;: &quot;Dan la peau d&#039;un developpeur back-end&quot;,
-        &quot;description&quot;: &quot;Moustapha FEKOTAN &agrave; la conqu&ecirc;te des apis.&quot;,
-        &quot;date_sortie&quot;: &quot;2025-08-03&quot;,
-        &quot;categorie_id&quot;: 1,
-        &quot;user_id&quot;: 3,
-        &quot;slug&quot;: &quot;f3a99050-2b6e-47df-9dfb-3479a0b89e31&quot;,
-        &quot;created_at&quot;: &quot;2025-08-04T01:40:17.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-08-04T01:40:17.000000Z&quot;,
-        &quot;categorie&quot;: {
-            &quot;id&quot;: 1,
-            &quot;nom&quot;: &quot;Humour&quot;,
-            &quot;slug&quot;: &quot;b7626366-fc34-4995-bc57-d26a21217281&quot;,
-            &quot;created_at&quot;: &quot;2025-08-04T01:25:01.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-04T01:25:01.000000Z&quot;
-        },
-        &quot;user&quot;: {
-            &quot;id&quot;: 3,
-            &quot;name&quot;: &quot;Moustapha FEKOTAN&quot;,
-            &quot;email&quot;: &quot;moustaphafek@gmail.com&quot;,
-            &quot;email_verified_at&quot;: null,
-            &quot;is_admin&quot;: 1,
-            &quot;role_id&quot;: 1,
-            &quot;created_at&quot;: &quot;2025-08-03T14:57:42.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-05T21:35:36.000000Z&quot;
-        }
-    },
-    {
-        &quot;id&quot;: 2,
         &quot;titre&quot;: &quot;vmqeopfuudtdsufvyvddq&quot;,
         &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
-        &quot;date_sortie&quot;: &quot;2025-08-05&quot;,
+        &quot;date_sortie&quot;: &quot;2025-08-07&quot;,
         &quot;categorie_id&quot;: 1,
-        &quot;user_id&quot;: 8,
-        &quot;slug&quot;: &quot;66af04cd-adcb-469f-88ad-8bd152f287fc&quot;,
-        &quot;created_at&quot;: &quot;2025-08-05T16:32:43.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-08-05T16:32:43.000000Z&quot;,
+        &quot;user_id&quot;: 1,
+        &quot;slug&quot;: &quot;94850ad5-dea0-4924-95f0-df065abe5834&quot;,
+        &quot;created_at&quot;: &quot;2025-08-07T17:37:05.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-08-07T17:37:05.000000Z&quot;,
         &quot;categorie&quot;: {
             &quot;id&quot;: 1,
-            &quot;nom&quot;: &quot;Humour&quot;,
-            &quot;slug&quot;: &quot;b7626366-fc34-4995-bc57-d26a21217281&quot;,
-            &quot;created_at&quot;: &quot;2025-08-04T01:25:01.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-04T01:25:01.000000Z&quot;
+            &quot;nom&quot;: &quot;vmqeopfuudtdsufvyvddq&quot;,
+            &quot;slug&quot;: &quot;7aaf74d2-e2d3-4362-8e09-f7975fe6dd0a&quot;,
+            &quot;created_at&quot;: &quot;2025-08-07T17:30:46.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-07T17:30:46.000000Z&quot;
         },
         &quot;user&quot;: {
-            &quot;id&quot;: 8,
+            &quot;id&quot;: 1,
             &quot;name&quot;: &quot;consequatur&quot;,
             &quot;email&quot;: &quot;qkunze@example.com&quot;,
             &quot;email_verified_at&quot;: null,
-            &quot;is_admin&quot;: 0,
-            &quot;role_id&quot;: 1,
-            &quot;created_at&quot;: &quot;2025-08-05T03:21:31.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-05T03:21:31.000000Z&quot;
+            &quot;two_factor_secret&quot;: null,
+            &quot;two_factor_recovery_codes&quot;: null,
+            &quot;two_factor_confirmed_at&quot;: null,
+            &quot;is_admin&quot;: 1,
+            &quot;role_id&quot;: 4,
+            &quot;created_at&quot;: &quot;2025-08-07T17:20:21.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-07T17:20:21.000000Z&quot;
         }
     }
 ]</code>
@@ -2720,7 +2713,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-05T23:08:33\",
+    \"date_sortie\": \"2025-08-07T18:02:04\",
     \"categorie_id\": \"consequatur\"
 }"
 </code></pre></div>
@@ -2740,7 +2733,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-05T23:08:33",
+    "date_sortie": "2025-08-07T18:02:04",
     "categorie_id": "consequatur"
 };
 
@@ -2846,10 +2839,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="POSTapi-livres-store"
-               value="2025-08-05T23:08:33"
+               value="2025-08-07T18:02:04"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-05T23:08:33</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-07T18:02:04</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -2885,7 +2878,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"titre\": \"vmqeopfuudtdsufvyvddq\",
     \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-05T23:08:33\"
+    \"date_sortie\": \"2025-08-07T18:02:04\"
 }"
 </code></pre></div>
 
@@ -2904,7 +2897,7 @@ const headers = {
 let body = {
     "titre": "vmqeopfuudtdsufvyvddq",
     "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-05T23:08:33"
+    "date_sortie": "2025-08-07T18:02:04"
 };
 
 fetch(url, {
@@ -3021,10 +3014,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="PUTapi-livres--slug-"
-               value="2025-08-05T23:08:33"
+               value="2025-08-07T18:02:04"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-05T23:08:33</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-07T18:02:04</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3208,26 +3201,15 @@ access-control-allow-origin: *
     &quot;current_page&quot;: 1,
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 2,
+            &quot;id&quot;: 1,
             &quot;titre&quot;: &quot;vmqeopfuudtdsufvyvddq&quot;,
             &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
-            &quot;date_sortie&quot;: &quot;2025-08-05&quot;,
+            &quot;date_sortie&quot;: &quot;2025-08-07&quot;,
             &quot;categorie_id&quot;: 1,
-            &quot;user_id&quot;: 8,
-            &quot;slug&quot;: &quot;66af04cd-adcb-469f-88ad-8bd152f287fc&quot;,
-            &quot;created_at&quot;: &quot;2025-08-05T16:32:43.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-05T16:32:43.000000Z&quot;
-        },
-        {
-            &quot;id&quot;: 1,
-            &quot;titre&quot;: &quot;Dan la peau d&#039;un developpeur back-end&quot;,
-            &quot;description&quot;: &quot;Moustapha FEKOTAN &agrave; la conqu&ecirc;te des apis.&quot;,
-            &quot;date_sortie&quot;: &quot;2025-08-03&quot;,
-            &quot;categorie_id&quot;: 1,
-            &quot;user_id&quot;: 3,
-            &quot;slug&quot;: &quot;f3a99050-2b6e-47df-9dfb-3479a0b89e31&quot;,
-            &quot;created_at&quot;: &quot;2025-08-04T01:40:17.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-04T01:40:17.000000Z&quot;
+            &quot;user_id&quot;: 1,
+            &quot;slug&quot;: &quot;94850ad5-dea0-4924-95f0-df065abe5834&quot;,
+            &quot;created_at&quot;: &quot;2025-08-07T17:37:05.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-07T17:37:05.000000Z&quot;
         }
     ],
     &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
@@ -3255,8 +3237,8 @@ access-control-allow-origin: *
     &quot;path&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre&quot;,
     &quot;per_page&quot;: 10,
     &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 2,
-    &quot;total&quot;: 2
+    &quot;to&quot;: 1,
+    &quot;total&quot;: 1
 }</code>
  </pre>
     </span>
