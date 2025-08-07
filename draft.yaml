@@ -1,41 +1,68 @@
-models:
-  Categorie:
-    nom: string
-
-  Role:
-    nom: string
-
-  User:
-    name: string
-    email: string
-    email_verified_at: timestamp nullable
-    password: string
-    role_id: id foreign
-    remember_token: string nullable
-
 controllers:
-  CategorieController:
-    index
-    show
-    store
-    update
-    destroy
+  Auth/AuthenticatedSession:
+    methods:
+      verifyEmail:
+        uri: 'email/verify/{id}/{hash}'
+        method: get
+        name: verification.verify
+        middleware: ['auth:sanctum', 'signed']
+        request:
+          id: integer
+          hash: string
+        response: 200
 
-  RoleController:
-    index
-    show
-    store
-    update
-    destroy
+      sendVerificationEmail:
+        uri: 'email/verification-notification'
+        method: post
+        name: verification.send
+        middleware: ['auth:sanctum']
+        response: 200
 
-  UserController:
-    index
-    show
-    store
-    update
-    destroy
+      forgotPassword:
+        uri: 'forgot-password'
+        method: post
+        name: api.forgot-password
+        request:
+          email: string email
+        response: 200
 
-  AuthController:
-    resetPassword
-    updatePassword
-    verifyEmail
+      resetPassword:
+        uri: 'reset-password'
+        method: post
+        name: api.reset-password
+        request:
+          email: string email
+          token: string
+          password: string
+          password_confirmation: string
+        response: 200
+
+      changePassword:
+        uri: 'change-password'
+        method: post
+        name: api.change-password
+        middleware: ['auth:sanctum']
+        request:
+          current_password: string
+          password: string
+          password_confirmation: string
+        response: 200
+
+  Roles:
+    resource: api
+    model: Roles
+    middleware: ['auth:sanctum']
+
+  Categorie:
+    resource: api
+    model: Categories
+    middleware: ['auth:sanctum']
+
+models:
+  Roles:
+    nom: string
+   
+
+  Categories:
+    nom: string
+   
