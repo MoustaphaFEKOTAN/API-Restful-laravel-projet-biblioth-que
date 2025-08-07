@@ -8,9 +8,11 @@ use Illuminate\Support\Str;
 
 class CategorieController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   /**
+ * 
+ * 
+ * @authenticated
+ */
    public function index()
 {
     $categories = Categories::all();

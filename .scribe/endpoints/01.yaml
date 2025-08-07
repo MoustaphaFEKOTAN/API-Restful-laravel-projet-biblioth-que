@@ -154,7 +154,7 @@ endpoints:
         name: remember_me
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -163,7 +163,7 @@ endpoints:
     cleanBodyParameters:
       email: qkunze@example.com
       password: 'O[2UZ5ij-e/dl4m{o,'
-      remember_me: false
+      remember_me: true
     fileParameters: []
     responses:
       -
@@ -429,21 +429,21 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      email:
-        name: email
-        description: 'Email de l’utilisateur.'
-        required: true
-        example: qkunze@example.com
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
       token:
         name: token
         description: 'Le token de réinitialisation.'
         required: true
         example: consequatur
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Email de l’utilisateur.'
+        required: true
+        example: qkunze@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -470,8 +470,8 @@ endpoints:
         nullable: false
         custom: []
     cleanBodyParameters:
-      email: qkunze@example.com
       token: consequatur
+      email: qkunze@example.com
       password: 'O[2UZ5ij-e/dl4m{o,'
       password_confirmation: consequatur
     fileParameters: []

@@ -86,8 +86,7 @@ return [
     ],
 
     'try_it_out' => [
-        // Add a Try It Out button to your endpoints so consumers can test endpoints right from their browser.
-        // Don't forget to enable CORS headers for your endpoints.
+        // Empecher les test directs via la documentation
         'enabled' => false,
 
         // The base URL to use in the API tester. Leave as null to be the same as the displayed URL (`scribe.base_url`).
@@ -102,7 +101,7 @@ return [
 
     // How is your API authenticated? This information will be used in the displayed docs, generated examples and response calls.
     'auth' => [
-        // En mettant cette valeure a true , les routes avec l'annotation  @authenticated seul sont activé
+        // En mettant cette valeure a true , les routes avec l'annotation  @authenticated seul sont activé avec baerer
         'enabled' => true,
 
         // En mettant la valeure a true , toute l'api sera automatiuement vérouillé et il faudra utuliser l'annotation @unauthenticated
