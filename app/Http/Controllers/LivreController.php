@@ -83,10 +83,13 @@ public function update(Request $request, $slug)
  */
     public function destroy($slug)
     {
-        $livre = Livres::findOrFail($slug);
+         $livre = Livres::where('slug', $slug)->firstOrFail();
        if ($livre->user_id !== Auth::id()) {
+
     return response()->json(['message' => 'Non autorisé'], 403);
 }
+
+$livre->delete();
 
     }
 
