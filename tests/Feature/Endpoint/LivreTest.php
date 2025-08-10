@@ -52,7 +52,7 @@ $role = Roles::factory()->create([
             'date_sortie' =>'2025-08-01',
             'slug' => (string) Str::uuid(),
             'categorie_id' =>  Categories::factory()->create()->id,
-             'user_id' => $this->user,
+             'user_id' => $this->user->id,
         ];
 
 // dd($this->user);
@@ -91,7 +91,7 @@ $role = Roles::factory()->create([
             'date_sortie' =>'2025-08-01',
             'slug' => (string) Str::uuid(),
             'categorie_id' =>  Categories::factory()->create()->id,
-             'user_id' => $this->user,
+             'user_id' => $this->user->id,
         ];
 
         $response = $this->actingAs($this->user, 'sanctum')
