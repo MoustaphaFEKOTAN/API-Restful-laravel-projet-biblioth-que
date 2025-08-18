@@ -167,7 +167,7 @@ Envoie un lien de réinitialisation du mot de passe à l’e-mail fourni.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 7, 2025</li>
+        <li>Last updated: August 18, 2025</li>
     </ul>
 </div>
 
@@ -1850,16 +1850,12 @@ access-control-allow-origin: *
 
 <code class="language-json" style="max-height: 300px;">[
     {
-        &quot;id&quot;: 4,
+        &quot;id&quot;: 1,
         &quot;nom&quot;: &quot;auteur&quot;
     },
     {
-        &quot;id&quot;: 5,
+        &quot;id&quot;: 2,
         &quot;nom&quot;: &quot;lecteur&quot;
-    },
-    {
-        &quot;id&quot;: 6,
-        &quot;nom&quot;: &quot;consequatur&quot;
     }
 ]</code>
  </pre>
@@ -2484,39 +2480,7 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[
-    {
-        &quot;id&quot;: 1,
-        &quot;titre&quot;: &quot;vmqeopfuudtdsufvyvddq&quot;,
-        &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
-        &quot;date_sortie&quot;: &quot;2025-08-07&quot;,
-        &quot;categorie_id&quot;: 1,
-        &quot;user_id&quot;: 1,
-        &quot;slug&quot;: &quot;94850ad5-dea0-4924-95f0-df065abe5834&quot;,
-        &quot;created_at&quot;: &quot;2025-08-07T17:37:05.000000Z&quot;,
-        &quot;updated_at&quot;: &quot;2025-08-07T17:37:05.000000Z&quot;,
-        &quot;categorie&quot;: {
-            &quot;id&quot;: 1,
-            &quot;nom&quot;: &quot;vmqeopfuudtdsufvyvddq&quot;,
-            &quot;slug&quot;: &quot;7aaf74d2-e2d3-4362-8e09-f7975fe6dd0a&quot;,
-            &quot;created_at&quot;: &quot;2025-08-07T17:30:46.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-07T17:30:46.000000Z&quot;
-        },
-        &quot;user&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;consequatur&quot;,
-            &quot;email&quot;: &quot;qkunze@example.com&quot;,
-            &quot;email_verified_at&quot;: null,
-            &quot;two_factor_secret&quot;: null,
-            &quot;two_factor_recovery_codes&quot;: null,
-            &quot;two_factor_confirmed_at&quot;: null,
-            &quot;is_admin&quot;: 1,
-            &quot;role_id&quot;: 4,
-            &quot;created_at&quot;: &quot;2025-08-07T17:20:21.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-07T17:20:21.000000Z&quot;
-        }
-    }
-]</code>
+<code class="language-json" style="max-height: 300px;">[]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-livres" hidden>
@@ -2708,15 +2672,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/livres/store" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"titre\": \"vmqeopfuudtdsufvyvddq\",
-    \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-07T18:02:04\",
-    \"categorie_id\": \"consequatur\"
-}"
-</code></pre></div>
+    --form "titre=vmqeopfuudtdsufvyvddq"\
+    --form "description=Dolores dolorum amet iste laborum eius est dolor."\
+    --form "date_sortie=2025-08-18T12:27:32"\
+    --form "categorie_id=consequatur"\
+    --form "cover=@C:\Users\FUCKYOUROPINION\AppData\Local\Temp\phpBB6B.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2726,21 +2688,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "titre": "vmqeopfuudtdsufvyvddq",
-    "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-07T18:02:04",
-    "categorie_id": "consequatur"
-};
+const body = new FormData();
+body.append('titre', 'vmqeopfuudtdsufvyvddq');
+body.append('description', 'Dolores dolorum amet iste laborum eius est dolor.');
+body.append('date_sortie', '2025-08-18T12:27:32');
+body.append('categorie_id', 'consequatur');
+body.append('cover', document.querySelector('input[name="cover"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -2765,7 +2727,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-livres-store" data-method="POST"
       data-path="api/livres/store"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-livres-store', this);">
@@ -2794,10 +2756,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-livres-store"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -2839,10 +2801,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="POSTapi-livres-store"
-               value="2025-08-07T18:02:04"
+               value="2025-08-18T12:27:32"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-07T18:02:04</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-18T12:27:32</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -2854,6 +2816,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>The <code>id</code> of an existing record in the categories table. Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover"                data-endpoint="POSTapi-livres-store"
+               value=""
+               data-component="body">
+    <br>
+<p>Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets. Example: <code>C:\Users\FUCKYOUROPINION\AppData\Local\Temp\phpBB6B.tmp</code></p>
         </div>
         </form>
 
@@ -2873,14 +2846,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request PUT \
     "http://127.0.0.1:8000/api/livres/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"titre\": \"vmqeopfuudtdsufvyvddq\",
-    \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-07T18:02:04\"
-}"
-</code></pre></div>
+    --form "titre=vmqeopfuudtdsufvyvddq"\
+    --form "description=Dolores dolorum amet iste laborum eius est dolor."\
+    --form "date_sortie=2025-08-18T12:27:32"\
+    --form "cover=@C:\Users\FUCKYOUROPINION\AppData\Local\Temp\phpBBAB.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2890,20 +2861,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "titre": "vmqeopfuudtdsufvyvddq",
-    "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-07T18:02:04"
-};
+const body = new FormData();
+body.append('titre', 'vmqeopfuudtdsufvyvddq');
+body.append('description', 'Dolores dolorum amet iste laborum eius est dolor.');
+body.append('date_sortie', '2025-08-18T12:27:32');
+body.append('cover', document.querySelector('input[name="cover"]').files[0]);
 
 fetch(url, {
     method: "PUT",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -2928,7 +2899,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-PUTapi-livres--slug-" data-method="PUT"
       data-path="api/livres/{slug}"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-livres--slug-', this);">
@@ -2957,10 +2928,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-livres--slug-"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -3014,10 +2985,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="PUTapi-livres--slug-"
-               value="2025-08-07T18:02:04"
+               value="2025-08-18T12:27:32"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-07T18:02:04</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-18T12:27:32</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3029,6 +3000,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>The <code>id</code> of an existing record in the categories table.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover"                data-endpoint="PUTapi-livres--slug-"
+               value=""
+               data-component="body">
+    <br>
+<p>Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets. Example: <code>C:\Users\FUCKYOUROPINION\AppData\Local\Temp\phpBBAB.tmp</code></p>
         </div>
         </form>
 
@@ -3198,47 +3180,9 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;current_page&quot;: 1,
-    &quot;data&quot;: [
-        {
-            &quot;id&quot;: 1,
-            &quot;titre&quot;: &quot;vmqeopfuudtdsufvyvddq&quot;,
-            &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
-            &quot;date_sortie&quot;: &quot;2025-08-07&quot;,
-            &quot;categorie_id&quot;: 1,
-            &quot;user_id&quot;: 1,
-            &quot;slug&quot;: &quot;94850ad5-dea0-4924-95f0-df065abe5834&quot;,
-            &quot;created_at&quot;: &quot;2025-08-07T17:37:05.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2025-08-07T17:37:05.000000Z&quot;
-        }
-    ],
-    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
-    &quot;from&quot;: 1,
-    &quot;last_page&quot;: 1,
-    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
-    &quot;links&quot;: [
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;&amp;laquo; Pr&eacute;c&eacute;dent&quot;,
-            &quot;active&quot;: false
-        },
-        {
-            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
-            &quot;label&quot;: &quot;1&quot;,
-            &quot;active&quot;: true
-        },
-        {
-            &quot;url&quot;: null,
-            &quot;label&quot;: &quot;Suivant &amp;raquo;&quot;,
-            &quot;active&quot;: false
-        }
-    ],
-    &quot;next_page_url&quot;: null,
-    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre&quot;,
-    &quot;per_page&quot;: 10,
-    &quot;prev_page_url&quot;: null,
-    &quot;to&quot;: 1,
-    &quot;total&quot;: 1
+    &quot;message&quot;: &quot;Aucun r&eacute;sultat&quot;,
+    &quot;data&quot;: [],
+    &quot;total&quot;: 0
 }</code>
  </pre>
     </span>
