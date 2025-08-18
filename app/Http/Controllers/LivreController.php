@@ -26,6 +26,7 @@ class LivreController extends Controller
         'description' => 'required|string',
         'date_sortie' => 'required|date',
         'categorie_id' => 'required|exists:categories,id',
+        'cover' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
     ]);
 
     $livre = new Livres();
@@ -38,9 +39,17 @@ class LivreController extends Controller
     $livre->user_id = auth::id();
     $livre->slug = (string) Str::uuid();
 
+       // ✅ Gestion de l’image
+    if ($request->hasFile('cover')) {
+        $path = $request->file('cover')->store('covers', 'public');
+        $livre->cover = $path;
+    }
+
     $livre->save();
 
-    return response()->json(['message' => 'Livre ajouté avec succès', 'livre' => $livre], 201);
+    return response()->json(['message' => 'Livre ajouté avec succès', 
+    'livre' => $livre,  
+    'cover_url' => $livre->cover ? asset('storage/' . $livre->cover) : null], 201);
 }
 
 
@@ -68,11 +77,20 @@ public function update(Request $request, $slug)
         'description' => 'sometimes|string',
         'date_sortie' => 'sometimes|date',
         'categorie_id' => 'sometimes|exists:categories,id',
+        'cover' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', 
     ]);
 
     $livre->update($request->only(['titre', 'description', 'date_sortie', 'categorie_id']));
 
-    return response()->json(['message' => 'Livre mis à jour avec succès', 'livre' => $livre]);
+      // ✅ Si une nouvelle image est envoyée
+    if ($request->hasFile('cover')) {
+        $path = $request->file('cover')->store('covers', 'public');
+        $livre->cover = $path;
+        $livre->save();
+    }
+
+    return response()->json(['message' => 'Livre mis à jour avec succès', 
+    'livre' => $livre,  'cover_url' => $livre->cover ? asset('storage/' . $livre->cover) : null]);
 }
 
 
