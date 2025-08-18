@@ -6,6 +6,7 @@ use App\Models\Livres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class LivreController extends Controller
 {
@@ -84,12 +85,16 @@ public function update(Request $request, $slug)
 
       // ✅ Si une nouvelle image est envoyée
     if ($request->hasFile('cover')) {
+        $old_image = $livre->cover;
+         if ($old_image) {
+        Storage::disk('public')->delete($livre->cover);
+    }
         $path = $request->file('cover')->store('covers', 'public');
         $livre->cover = $path;
         $livre->save();
     }
 
-    return response()->json(['message' => 'Livre mis à jour avec succès', 
+    return response()->json(['message' => 'Livre mis à jour avec succès',
     'livre' => $livre,  'cover_url' => $livre->cover ? asset('storage/' . $livre->cover) : null]);
 }
 

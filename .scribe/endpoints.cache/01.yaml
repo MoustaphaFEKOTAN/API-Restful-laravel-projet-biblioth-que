@@ -156,7 +156,7 @@ endpoints:
         name: remember_me
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -165,7 +165,7 @@ endpoints:
     cleanBodyParameters:
       email: qkunze@example.com
       password: 'O[2UZ5ij-e/dl4m{o,'
-      remember_me: true
+      remember_me: false
     fileParameters: []
     responses:
       -

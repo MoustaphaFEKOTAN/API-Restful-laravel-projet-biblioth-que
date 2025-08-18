@@ -25,6 +25,12 @@
                     body .content .javascript-example code { display: none; }
             </style>
 
+    <script>
+        var tryItOutBaseUrl = "http://127.0.0.1:8000";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-5.3.0.js") }}"></script>
 
     <script src="{{ asset("/vendor/scribe/js/theme-default-5.3.0.js") }}"></script>
 
@@ -287,6 +293,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-register', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-register"
+                    onclick="tryItOut('POSTapi-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-register"
+                    onclick="cancelTryOut('POSTapi-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-register"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -394,7 +417,7 @@ Ce endpoint permet à un utilisateur de se connecter.</h2>
     --data "{
     \"email\": \"qkunze@example.com\",
     \"password\": \"O[2UZ5ij-e\\/dl4m{o,\",
-    \"remember_me\": true
+    \"remember_me\": false
 }"
 </code></pre></div>
 
@@ -412,7 +435,7 @@ const headers = {
 let body = {
     "email": "qkunze@example.com",
     "password": "O[2UZ5ij-e\/dl4m{o,",
-    "remember_me": true
+    "remember_me": false
 };
 
 fetch(url, {
@@ -471,6 +494,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-login', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-login"
+                    onclick="tryItOut('POSTapi-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-login"
+                    onclick="cancelTryOut('POSTapi-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-login"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -541,7 +581,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -620,6 +660,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-logout', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-logout"
+                    onclick="tryItOut('POSTapi-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-logout"
+                    onclick="cancelTryOut('POSTapi-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-logout"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -733,6 +790,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-email-verify--id---hash-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-email-verify--id---hash-"
+                    onclick="tryItOut('GETapi-email-verify--id---hash-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-email-verify--id---hash-"
+                    onclick="cancelTryOut('GETapi-email-verify--id---hash-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-email-verify--id---hash-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -861,6 +935,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-email-verification-notification', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-email-verification-notification"
+                    onclick="tryItOut('POSTapi-email-verification-notification');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-email-verification-notification"
+                    onclick="cancelTryOut('POSTapi-email-verification-notification');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-email-verification-notification"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -983,6 +1074,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-forgot-password', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-forgot-password"
+                    onclick="tryItOut('POSTapi-forgot-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-forgot-password"
+                    onclick="cancelTryOut('POSTapi-forgot-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-forgot-password"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -1110,6 +1218,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-reset-password', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-reset-password"
+                    onclick="tryItOut('POSTapi-reset-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-reset-password"
+                    onclick="cancelTryOut('POSTapi-reset-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-reset-password"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -1269,6 +1394,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-categories', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-categories"
+                    onclick="tryItOut('GETapi-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-categories"
+                    onclick="cancelTryOut('GETapi-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-categories"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1383,6 +1525,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-categories', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-categories"
+                    onclick="tryItOut('POSTapi-categories');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-categories"
+                    onclick="cancelTryOut('POSTapi-categories');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-categories"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -1516,6 +1675,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-categories--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-categories--id-"
+                    onclick="tryItOut('GETapi-categories--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-categories--id-"
+                    onclick="cancelTryOut('GETapi-categories--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-categories--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1639,6 +1815,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-categories--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-categories--id-"
+                    onclick="tryItOut('PUTapi-categories--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-categories--id-"
+                    onclick="cancelTryOut('PUTapi-categories--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-categories--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-darkblue">PUT</small>
@@ -1758,6 +1951,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('DELETEapi-categories--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-categories--id-"
+                    onclick="tryItOut('DELETEapi-categories--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-categories--id-"
+                    onclick="cancelTryOut('DELETEapi-categories--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-categories--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-red">DELETE</small>
@@ -1884,6 +2094,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-roles', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles"
+                    onclick="tryItOut('GETapi-roles');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles"
+                    onclick="cancelTryOut('GETapi-roles');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -1987,6 +2214,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-roles', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-roles"
+                    onclick="tryItOut('POSTapi-roles');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-roles"
+                    onclick="cancelTryOut('POSTapi-roles');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-roles"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -2120,6 +2364,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-roles--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-roles--id-"
+                    onclick="tryItOut('GETapi-roles--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-roles--id-"
+                    onclick="cancelTryOut('GETapi-roles--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-roles--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -2246,6 +2507,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-roles--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-roles--id-"
+                    onclick="tryItOut('PUTapi-roles--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-roles--id-"
+                    onclick="cancelTryOut('PUTapi-roles--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-roles--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-darkblue">PUT</small>
@@ -2379,6 +2657,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('DELETEapi-roles--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-roles--id-"
+                    onclick="tryItOut('DELETEapi-roles--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-roles--id-"
+                    onclick="cancelTryOut('DELETEapi-roles--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-roles--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-red">DELETE</small>
@@ -2480,7 +2775,40 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">[]</code>
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 1,
+        &quot;titre&quot;: &quot;yes&quot;,
+        &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
+        &quot;date_sortie&quot;: &quot;2025-08-18&quot;,
+        &quot;cover&quot;: &quot;covers/M1VWvXLSwJEhunUOATxz8sR6D3Cu60WNwf6EYKTN.jpg&quot;,
+        &quot;categorie_id&quot;: 1,
+        &quot;user_id&quot;: 1,
+        &quot;slug&quot;: &quot;6db860b6-f280-4b27-b655-b123b57ce041&quot;,
+        &quot;created_at&quot;: &quot;2025-08-18T12:33:32.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-08-18T12:36:08.000000Z&quot;,
+        &quot;categorie&quot;: {
+            &quot;id&quot;: 1,
+            &quot;nom&quot;: &quot;test&quot;,
+            &quot;slug&quot;: &quot;&quot;,
+            &quot;created_at&quot;: null,
+            &quot;updated_at&quot;: null
+        },
+        &quot;user&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;consequatur&quot;,
+            &quot;email&quot;: &quot;qkunze@example.com&quot;,
+            &quot;email_verified_at&quot;: null,
+            &quot;two_factor_secret&quot;: null,
+            &quot;two_factor_recovery_codes&quot;: null,
+            &quot;two_factor_confirmed_at&quot;: null,
+            &quot;is_admin&quot;: 0,
+            &quot;role_id&quot;: 1,
+            &quot;created_at&quot;: &quot;2025-08-18T12:30:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-18T12:30:25.000000Z&quot;
+        }
+    }
+]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-livres" hidden>
@@ -2507,6 +2835,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-livres', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-livres"
+                    onclick="tryItOut('GETapi-livres');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-livres"
+                    onclick="cancelTryOut('GETapi-livres');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-livres"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -2614,6 +2959,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-livres--slug-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-livres--slug-"
+                    onclick="tryItOut('GETapi-livres--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-livres--slug-"
+                    onclick="cancelTryOut('GETapi-livres--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-livres--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -2676,9 +3038,9 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --form "titre=vmqeopfuudtdsufvyvddq"\
     --form "description=Dolores dolorum amet iste laborum eius est dolor."\
-    --form "date_sortie=2025-08-18T12:27:32"\
+    --form "date_sortie=2025-08-18T12:51:16"\
     --form "categorie_id=consequatur"\
-    --form "cover=@C:\Users\FUCKYOUROPINION\AppData\Local\Temp\phpBB6B.tmp" </code></pre></div>
+    --form "cover=@C:\Users\FUCKYOUROPINION\AppData\Local\Temp\php77DF.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2695,7 +3057,7 @@ const headers = {
 const body = new FormData();
 body.append('titre', 'vmqeopfuudtdsufvyvddq');
 body.append('description', 'Dolores dolorum amet iste laborum eius est dolor.');
-body.append('date_sortie', '2025-08-18T12:27:32');
+body.append('date_sortie', '2025-08-18T12:51:16');
 body.append('categorie_id', 'consequatur');
 body.append('cover', document.querySelector('input[name="cover"]').files[0]);
 
@@ -2733,6 +3095,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-livres-store', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-livres-store"
+                    onclick="tryItOut('POSTapi-livres-store');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-livres-store"
+                    onclick="cancelTryOut('POSTapi-livres-store');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-livres-store"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
@@ -2801,10 +3180,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="POSTapi-livres-store"
-               value="2025-08-18T12:27:32"
+               value="2025-08-18T12:51:16"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-18T12:27:32</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-18T12:51:16</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -2826,7 +3205,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets. Example: <code>C:\Users\FUCKYOUROPINION\AppData\Local\Temp\phpBB6B.tmp</code></p>
+<p>Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets. Example: <code>C:\Users\FUCKYOUROPINION\AppData\Local\Temp\php77DF.tmp</code></p>
         </div>
         </form>
 
@@ -2850,8 +3229,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --form "titre=vmqeopfuudtdsufvyvddq"\
     --form "description=Dolores dolorum amet iste laborum eius est dolor."\
-    --form "date_sortie=2025-08-18T12:27:32"\
-    --form "cover=@C:\Users\FUCKYOUROPINION\AppData\Local\Temp\phpBBAB.tmp" </code></pre></div>
+    --form "date_sortie=2025-08-18T12:51:17"\
+    --form "cover=@C:\Users\FUCKYOUROPINION\AppData\Local\Temp\php780F.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -2868,7 +3247,7 @@ const headers = {
 const body = new FormData();
 body.append('titre', 'vmqeopfuudtdsufvyvddq');
 body.append('description', 'Dolores dolorum amet iste laborum eius est dolor.');
-body.append('date_sortie', '2025-08-18T12:27:32');
+body.append('date_sortie', '2025-08-18T12:51:17');
 body.append('cover', document.querySelector('input[name="cover"]').files[0]);
 
 fetch(url, {
@@ -2905,6 +3284,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-livres--slug-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-livres--slug-"
+                    onclick="tryItOut('PUTapi-livres--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-livres--slug-"
+                    onclick="cancelTryOut('PUTapi-livres--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-livres--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-darkblue">PUT</small>
@@ -2985,10 +3381,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="PUTapi-livres--slug-"
-               value="2025-08-18T12:27:32"
+               value="2025-08-18T12:51:17"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-18T12:27:32</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-18T12:51:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3010,7 +3406,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets. Example: <code>C:\Users\FUCKYOUROPINION\AppData\Local\Temp\phpBBAB.tmp</code></p>
+<p>Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets. Example: <code>C:\Users\FUCKYOUROPINION\AppData\Local\Temp\php780F.tmp</code></p>
         </div>
         </form>
 
@@ -3078,6 +3474,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('DELETEapi-livres--slug-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-livres--slug-"
+                    onclick="tryItOut('DELETEapi-livres--slug-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-livres--slug-"
+                    onclick="cancelTryOut('DELETEapi-livres--slug-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-livres--slug-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-red">DELETE</small>
@@ -3180,9 +3593,48 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Aucun r&eacute;sultat&quot;,
-    &quot;data&quot;: [],
-    &quot;total&quot;: 0
+    &quot;current_page&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;titre&quot;: &quot;yes&quot;,
+            &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
+            &quot;date_sortie&quot;: &quot;2025-08-18&quot;,
+            &quot;cover&quot;: &quot;covers/M1VWvXLSwJEhunUOATxz8sR6D3Cu60WNwf6EYKTN.jpg&quot;,
+            &quot;categorie_id&quot;: 1,
+            &quot;user_id&quot;: 1,
+            &quot;slug&quot;: &quot;6db860b6-f280-4b27-b655-b123b57ce041&quot;,
+            &quot;created_at&quot;: &quot;2025-08-18T12:33:32.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-18T12:36:08.000000Z&quot;
+        }
+    ],
+    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 1,
+    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;&amp;laquo; Pr&eacute;c&eacute;dent&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
+            &quot;label&quot;: &quot;1&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;Suivant &amp;raquo;&quot;,
+            &quot;active&quot;: false
+        }
+    ],
+    &quot;next_page_url&quot;: null,
+    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre&quot;,
+    &quot;per_page&quot;: 10,
+    &quot;prev_page_url&quot;: null,
+    &quot;to&quot;: 1,
+    &quot;total&quot;: 1
 }</code>
  </pre>
     </span>
@@ -3210,6 +3662,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('GETapi-recherche-livre', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-recherche-livre"
+                    onclick="tryItOut('GETapi-recherche-livre');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-recherche-livre"
+                    onclick="cancelTryOut('GETapi-recherche-livre');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-recherche-livre"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
@@ -3304,6 +3773,23 @@ You can check the Dev Tools console for debugging information.</code></pre>
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-change-password', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-change-password"
+                    onclick="tryItOut('POSTapi-change-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-change-password"
+                    onclick="cancelTryOut('POSTapi-change-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-change-password"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
