@@ -87,7 +87,7 @@ return [
 
     'try_it_out' => [
         // Empecher les test directs via la documentation
-        'enabled' => false,
+        'enabled' => true,
 
         // The base URL to use in the API tester. Leave as null to be the same as the displayed URL (`scribe.base_url`).
         'base_url' => null,
