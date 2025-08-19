@@ -30,11 +30,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -134,11 +131,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -276,11 +270,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 200
+        content: '[{"id":1,"nom":"auteur"},{"id":2,"nom":"lecteur"}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -377,11 +368,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 401
+        content: '{"message":"Unauthenticated."}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -527,11 +515,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 200
+        content: '[{"id":1,"titre":"yes","description":"Dolores dolorum amet iste laborum eius est dolor.","date_sortie":"2025-08-18","cover":"covers\/M1VWvXLSwJEhunUOATxz8sR6D3Cu60WNwf6EYKTN.jpg","categorie_id":1,"user_id":1,"slug":"6db860b6-f280-4b27-b655-b123b57ce041","created_at":"2025-08-18T12:33:32.000000Z","updated_at":"2025-08-18T12:36:08.000000Z","categorie":{"id":1,"nom":"test","slug":"","created_at":null,"updated_at":null},"user":{"id":1,"name":"consequatur","email":"qkunze@example.com","email_verified_at":null,"two_factor_secret":null,"two_factor_recovery_codes":null,"two_factor_confirmed_at":null,"is_admin":0,"role_id":1,"created_at":"2025-08-18T12:30:25.000000Z","updated_at":"2025-08-18T12:30:25.000000Z"}}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -581,10 +566,10 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
+        status: 404
         content: |-
           {
-              "message": "Server Error"
+              "message": "No query results for model [App\\Models\\Livres]."
           }
         headers:
           cache-control: 'no-cache, private'
@@ -614,7 +599,7 @@ endpoints:
       custom: []
     headers:
       Authorization: 'Bearer {YOUR_AUTH_KEY}'
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
@@ -645,7 +630,7 @@ endpoints:
         name: date_sortie
         description: "Le champ value n'est pas une date valide."
         required: true
-        example: '2025-08-19T15:39:52'
+        example: '2025-08-18T12:51:16'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -661,12 +646,23 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      cover:
+        name: cover
+        description: 'Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
       titre: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      date_sortie: '2025-08-19T15:39:52'
+      date_sortie: '2025-08-18T12:51:16'
       categorie_id: consequatur
-    fileParameters: []
+    fileParameters:
+      cover: null
     responses: []
     responseFields: []
     auth:
@@ -693,7 +689,7 @@ endpoints:
       custom: []
     headers:
       Authorization: 'Bearer {YOUR_AUTH_KEY}'
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
     urlParameters:
       slug:
@@ -735,7 +731,7 @@ endpoints:
         name: date_sortie
         description: "Le champ value n'est pas une date valide."
         required: false
-        example: '2025-08-19T15:39:52'
+        example: '2025-08-18T12:51:17'
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -751,11 +747,22 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
+      cover:
+        name: cover
+        description: 'Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
     cleanBodyParameters:
       titre: vmqeopfuudtdsufvyvddq
       description: 'Dolores dolorum amet iste laborum eius est dolor.'
-      date_sortie: '2025-08-19T15:39:52'
-    fileParameters: []
+      date_sortie: '2025-08-18T12:51:17'
+    fileParameters:
+      cover: null
     responses: []
     responseFields: []
     auth:
@@ -838,11 +845,8 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
+        status: 200
+        content: '{"current_page":1,"data":[{"id":1,"titre":"yes","description":"Dolores dolorum amet iste laborum eius est dolor.","date_sortie":"2025-08-18","cover":"covers\/M1VWvXLSwJEhunUOATxz8sR6D3Cu60WNwf6EYKTN.jpg","categorie_id":1,"user_id":1,"slug":"6db860b6-f280-4b27-b655-b123b57ce041","created_at":"2025-08-18T12:33:32.000000Z","updated_at":"2025-08-18T12:36:08.000000Z"}],"first_page_url":"http:\/\/127.0.0.1:8000\/api\/recherche\/livre?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/127.0.0.1:8000\/api\/recherche\/livre?page=1","links":[{"url":null,"label":"&laquo; Pr\u00e9c\u00e9dent","active":false},{"url":"http:\/\/127.0.0.1:8000\/api\/recherche\/livre?page=1","label":"1","active":true},{"url":null,"label":"Suivant &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/127.0.0.1:8000\/api\/recherche\/livre","per_page":10,"prev_page_url":null,"to":1,"total":1}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json

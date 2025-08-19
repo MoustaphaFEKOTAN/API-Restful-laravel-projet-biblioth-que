@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var tryItOutBaseUrl = "http://127.0.0.1:8080";
+        var tryItOutBaseUrl = "http://127.0.0.1:8000";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -173,7 +173,7 @@ Envoie un lien de réinitialisation du mot de passe à l’e-mail fourni.</a>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 19, 2025</li>
+        <li>Last updated: August 18, 2025</li>
     </ul>
 </div>
 
@@ -213,7 +213,7 @@ Ce endpoint permet à un utilisateur de s’inscrire.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/register" \
+    "http://127.0.0.1:8000/api/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -228,7 +228,7 @@ Ce endpoint permet à un utilisateur de s’inscrire.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/register"
+    "http://127.0.0.1:8000/api/register"
 );
 
 const headers = {
@@ -411,20 +411,20 @@ Ce endpoint permet à un utilisateur de se connecter.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/login" \
+    "http://127.0.0.1:8000/api/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"email\": \"qkunze@example.com\",
     \"password\": \"O[2UZ5ij-e\\/dl4m{o,\",
-    \"remember_me\": true
+    \"remember_me\": false
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/login"
+    "http://127.0.0.1:8000/api/login"
 );
 
 const headers = {
@@ -435,7 +435,7 @@ const headers = {
 let body = {
     "email": "qkunze@example.com",
     "password": "O[2UZ5ij-e\/dl4m{o,",
-    "remember_me": true
+    "remember_me": false
 };
 
 fetch(url, {
@@ -581,7 +581,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
         </form>
 
@@ -601,7 +601,7 @@ Ce endpoint permet à un utilisateur authentifié de se déconnecter (invalider 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/logout" \
+    "http://127.0.0.1:8000/api/logout" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -609,7 +609,7 @@ Ce endpoint permet à un utilisateur authentifié de se déconnecter (invalider 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/logout"
+    "http://127.0.0.1:8000/api/logout"
 );
 
 const headers = {
@@ -733,14 +733,14 @@ Ce endpoint valide l’e-mail de l’utilisateur via un lien.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8080/api/email/verify/17/consequatur" \
+    --get "http://127.0.0.1:8000/api/email/verify/17/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/email/verify/17/consequatur"
+    "http://127.0.0.1:8000/api/email/verify/17/consequatur"
 );
 
 const headers = {
@@ -876,7 +876,7 @@ Ce endpoint renvoie un e-mail de vérification à l’utilisateur connecté.</h2
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/email/verification-notification" \
+    "http://127.0.0.1:8000/api/email/verification-notification" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -884,7 +884,7 @@ Ce endpoint renvoie un e-mail de vérification à l’utilisateur connecté.</h2
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/email/verification-notification"
+    "http://127.0.0.1:8000/api/email/verification-notification"
 );
 
 const headers = {
@@ -1008,7 +1008,7 @@ Envoie un lien de réinitialisation du mot de passe à l’e-mail fourni.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/forgot-password" \
+    "http://127.0.0.1:8000/api/forgot-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1019,7 +1019,7 @@ Envoie un lien de réinitialisation du mot de passe à l’e-mail fourni.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/forgot-password"
+    "http://127.0.0.1:8000/api/forgot-password"
 );
 
 const headers = {
@@ -1146,7 +1146,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/reset-password" \
+    "http://127.0.0.1:8000/api/reset-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1160,7 +1160,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/reset-password"
+    "http://127.0.0.1:8000/api/reset-password"
 );
 
 const headers = {
@@ -1328,7 +1328,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8080/api/categories" \
+    --get "http://127.0.0.1:8000/api/categories" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1336,7 +1336,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/categories"
+    "http://127.0.0.1:8000/api/categories"
 );
 
 const headers = {
@@ -1354,7 +1354,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-categories">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1366,7 +1366,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -1466,7 +1466,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/categories" \
+    "http://127.0.0.1:8000/api/categories" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -1478,7 +1478,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/categories"
+    "http://127.0.0.1:8000/api/categories"
 );
 
 const headers = {
@@ -1609,7 +1609,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8080/api/categories/consequatur" \
+    --get "http://127.0.0.1:8000/api/categories/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1617,7 +1617,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/categories/consequatur"
+    "http://127.0.0.1:8000/api/categories/consequatur"
 );
 
 const headers = {
@@ -1635,7 +1635,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-categories--id-">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -1647,7 +1647,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -1758,7 +1758,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://127.0.0.1:8080/api/categories/consequatur" \
+    "http://127.0.0.1:8000/api/categories/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1769,7 +1769,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/categories/consequatur"
+    "http://127.0.0.1:8000/api/categories/consequatur"
 );
 
 const headers = {
@@ -1903,14 +1903,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://127.0.0.1:8080/api/categories/consequatur" \
+    "http://127.0.0.1:8000/api/categories/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/categories/consequatur"
+    "http://127.0.0.1:8000/api/categories/consequatur"
 );
 
 const headers = {
@@ -2023,14 +2023,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8080/api/roles" \
+    --get "http://127.0.0.1:8000/api/roles" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/roles"
+    "http://127.0.0.1:8000/api/roles"
 );
 
 const headers = {
@@ -2047,7 +2047,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-roles">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2058,9 +2058,16 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
-}</code>
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 1,
+        &quot;nom&quot;: &quot;auteur&quot;
+    },
+    {
+        &quot;id&quot;: 2,
+        &quot;nom&quot;: &quot;lecteur&quot;
+    }
+]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-roles" hidden>
@@ -2148,7 +2155,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/roles" \
+    "http://127.0.0.1:8000/api/roles" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -2160,7 +2167,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/roles"
+    "http://127.0.0.1:8000/api/roles"
 );
 
 const headers = {
@@ -2291,7 +2298,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8080/api/roles/consequatur" \
+    --get "http://127.0.0.1:8000/api/roles/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2299,7 +2306,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/roles/consequatur"
+    "http://127.0.0.1:8000/api/roles/consequatur"
 );
 
 const headers = {
@@ -2317,7 +2324,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-roles--id-">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (401):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2329,7 +2336,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;message&quot;: &quot;Unauthenticated.&quot;
 }</code>
  </pre>
     </span>
@@ -2441,7 +2448,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://127.0.0.1:8080/api/roles/consequatur" \
+    "http://127.0.0.1:8000/api/roles/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -2453,7 +2460,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/roles/consequatur"
+    "http://127.0.0.1:8000/api/roles/consequatur"
 );
 
 const headers = {
@@ -2600,7 +2607,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://127.0.0.1:8080/api/roles/consequatur" \
+    "http://127.0.0.1:8000/api/roles/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2608,7 +2615,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/roles/consequatur"
+    "http://127.0.0.1:8000/api/roles/consequatur"
 );
 
 const headers = {
@@ -2733,14 +2740,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8080/api/livres" \
+    --get "http://127.0.0.1:8000/api/livres" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/livres"
+    "http://127.0.0.1:8000/api/livres"
 );
 
 const headers = {
@@ -2757,7 +2764,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-livres">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2768,9 +2775,40 @@ content-type: application/json
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
-}</code>
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;id&quot;: 1,
+        &quot;titre&quot;: &quot;yes&quot;,
+        &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
+        &quot;date_sortie&quot;: &quot;2025-08-18&quot;,
+        &quot;cover&quot;: &quot;covers/M1VWvXLSwJEhunUOATxz8sR6D3Cu60WNwf6EYKTN.jpg&quot;,
+        &quot;categorie_id&quot;: 1,
+        &quot;user_id&quot;: 1,
+        &quot;slug&quot;: &quot;6db860b6-f280-4b27-b655-b123b57ce041&quot;,
+        &quot;created_at&quot;: &quot;2025-08-18T12:33:32.000000Z&quot;,
+        &quot;updated_at&quot;: &quot;2025-08-18T12:36:08.000000Z&quot;,
+        &quot;categorie&quot;: {
+            &quot;id&quot;: 1,
+            &quot;nom&quot;: &quot;test&quot;,
+            &quot;slug&quot;: &quot;&quot;,
+            &quot;created_at&quot;: null,
+            &quot;updated_at&quot;: null
+        },
+        &quot;user&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;consequatur&quot;,
+            &quot;email&quot;: &quot;qkunze@example.com&quot;,
+            &quot;email_verified_at&quot;: null,
+            &quot;two_factor_secret&quot;: null,
+            &quot;two_factor_recovery_codes&quot;: null,
+            &quot;two_factor_confirmed_at&quot;: null,
+            &quot;is_admin&quot;: 0,
+            &quot;role_id&quot;: 1,
+            &quot;created_at&quot;: &quot;2025-08-18T12:30:25.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-18T12:30:25.000000Z&quot;
+        }
+    }
+]</code>
  </pre>
     </span>
 <span id="execution-results-GETapi-livres" hidden>
@@ -2857,14 +2895,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8080/api/livres/consequatur" \
+    --get "http://127.0.0.1:8000/api/livres/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/livres/consequatur"
+    "http://127.0.0.1:8000/api/livres/consequatur"
 );
 
 const headers = {
@@ -2881,7 +2919,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-livres--slug-">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (404):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -2893,7 +2931,7 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Livres].&quot;
 }</code>
  </pre>
     </span>
@@ -2994,41 +3032,39 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/livres/store" \
+    "http://127.0.0.1:8000/api/livres/store" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"titre\": \"vmqeopfuudtdsufvyvddq\",
-    \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-19T15:39:52\",
-    \"categorie_id\": \"consequatur\"
-}"
-</code></pre></div>
+    --form "titre=vmqeopfuudtdsufvyvddq"\
+    --form "description=Dolores dolorum amet iste laborum eius est dolor."\
+    --form "date_sortie=2025-08-18T12:51:16"\
+    --form "categorie_id=consequatur"\
+    --form "cover=@C:\Users\FUCKYOUROPINION\AppData\Local\Temp\php77DF.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/livres/store"
+    "http://127.0.0.1:8000/api/livres/store"
 );
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "titre": "vmqeopfuudtdsufvyvddq",
-    "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-19T15:39:52",
-    "categorie_id": "consequatur"
-};
+const body = new FormData();
+body.append('titre', 'vmqeopfuudtdsufvyvddq');
+body.append('description', 'Dolores dolorum amet iste laborum eius est dolor.');
+body.append('date_sortie', '2025-08-18T12:51:16');
+body.append('categorie_id', 'consequatur');
+body.append('cover', document.querySelector('input[name="cover"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -3053,7 +3089,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-livres-store" data-method="POST"
       data-path="api/livres/store"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-livres-store', this);">
@@ -3099,10 +3135,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-livres-store"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -3144,10 +3180,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="POSTapi-livres-store"
-               value="2025-08-19T15:39:52"
+               value="2025-08-18T12:51:16"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-19T15:39:52</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-18T12:51:16</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3159,6 +3195,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>The <code>id</code> of an existing record in the categories table. Example: <code>consequatur</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover"                data-endpoint="POSTapi-livres-store"
+               value=""
+               data-component="body">
+    <br>
+<p>Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets. Example: <code>C:\Users\FUCKYOUROPINION\AppData\Local\Temp\php77DF.tmp</code></p>
         </div>
         </form>
 
@@ -3176,39 +3223,37 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://127.0.0.1:8080/api/livres/consequatur" \
+    "http://127.0.0.1:8000/api/livres/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"titre\": \"vmqeopfuudtdsufvyvddq\",
-    \"description\": \"Dolores dolorum amet iste laborum eius est dolor.\",
-    \"date_sortie\": \"2025-08-19T15:39:52\"
-}"
-</code></pre></div>
+    --form "titre=vmqeopfuudtdsufvyvddq"\
+    --form "description=Dolores dolorum amet iste laborum eius est dolor."\
+    --form "date_sortie=2025-08-18T12:51:17"\
+    --form "cover=@C:\Users\FUCKYOUROPINION\AppData\Local\Temp\php780F.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/livres/consequatur"
+    "http://127.0.0.1:8000/api/livres/consequatur"
 );
 
 const headers = {
     "Authorization": "Bearer {YOUR_AUTH_KEY}",
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "titre": "vmqeopfuudtdsufvyvddq",
-    "description": "Dolores dolorum amet iste laborum eius est dolor.",
-    "date_sortie": "2025-08-19T15:39:52"
-};
+const body = new FormData();
+body.append('titre', 'vmqeopfuudtdsufvyvddq');
+body.append('description', 'Dolores dolorum amet iste laborum eius est dolor.');
+body.append('date_sortie', '2025-08-18T12:51:17');
+body.append('cover', document.querySelector('input[name="cover"]').files[0]);
 
 fetch(url, {
     method: "PUT",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -3233,7 +3278,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-PUTapi-livres--slug-" data-method="PUT"
       data-path="api/livres/{slug}"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('PUTapi-livres--slug-', this);">
@@ -3279,10 +3324,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="PUTapi-livres--slug-"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -3336,10 +3381,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="date_sortie"                data-endpoint="PUTapi-livres--slug-"
-               value="2025-08-19T15:39:52"
+               value="2025-08-18T12:51:17"
                data-component="body">
     <br>
-<p>Le champ value n'est pas une date valide. Example: <code>2025-08-19T15:39:52</code></p>
+<p>Le champ value n'est pas une date valide. Example: <code>2025-08-18T12:51:17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>categorie_id</code></b>&nbsp;&nbsp;
@@ -3351,6 +3396,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>The <code>id</code> of an existing record in the categories table.</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>cover</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="cover"                data-endpoint="PUTapi-livres--slug-"
+               value=""
+               data-component="body">
+    <br>
+<p>Le champ value doit être une image. La taille du fichier de value ne peut pas dépasser 2048 kilo-octets. Example: <code>C:\Users\FUCKYOUROPINION\AppData\Local\Temp\php780F.tmp</code></p>
         </div>
         </form>
 
@@ -3368,7 +3424,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://127.0.0.1:8080/api/livres/consequatur" \
+    "http://127.0.0.1:8000/api/livres/consequatur" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3376,7 +3432,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/livres/consequatur"
+    "http://127.0.0.1:8000/api/livres/consequatur"
 );
 
 const headers = {
@@ -3501,14 +3557,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8080/api/recherche/livre" \
+    --get "http://127.0.0.1:8000/api/recherche/livre" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/recherche/livre"
+    "http://127.0.0.1:8000/api/recherche/livre"
 );
 
 const headers = {
@@ -3525,7 +3581,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-recherche-livre">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -3537,7 +3593,48 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Server Error&quot;
+    &quot;current_page&quot;: 1,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;titre&quot;: &quot;yes&quot;,
+            &quot;description&quot;: &quot;Dolores dolorum amet iste laborum eius est dolor.&quot;,
+            &quot;date_sortie&quot;: &quot;2025-08-18&quot;,
+            &quot;cover&quot;: &quot;covers/M1VWvXLSwJEhunUOATxz8sR6D3Cu60WNwf6EYKTN.jpg&quot;,
+            &quot;categorie_id&quot;: 1,
+            &quot;user_id&quot;: 1,
+            &quot;slug&quot;: &quot;6db860b6-f280-4b27-b655-b123b57ce041&quot;,
+            &quot;created_at&quot;: &quot;2025-08-18T12:33:32.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2025-08-18T12:36:08.000000Z&quot;
+        }
+    ],
+    &quot;first_page_url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
+    &quot;from&quot;: 1,
+    &quot;last_page&quot;: 1,
+    &quot;last_page_url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
+    &quot;links&quot;: [
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;&amp;laquo; Pr&eacute;c&eacute;dent&quot;,
+            &quot;active&quot;: false
+        },
+        {
+            &quot;url&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre?page=1&quot;,
+            &quot;label&quot;: &quot;1&quot;,
+            &quot;active&quot;: true
+        },
+        {
+            &quot;url&quot;: null,
+            &quot;label&quot;: &quot;Suivant &amp;raquo;&quot;,
+            &quot;active&quot;: false
+        }
+    ],
+    &quot;next_page_url&quot;: null,
+    &quot;path&quot;: &quot;http://127.0.0.1:8000/api/recherche/livre&quot;,
+    &quot;per_page&quot;: 10,
+    &quot;prev_page_url&quot;: null,
+    &quot;to&quot;: 1,
+    &quot;total&quot;: 1
 }</code>
  </pre>
     </span>
@@ -3626,7 +3723,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8080/api/change-password" \
+    "http://127.0.0.1:8000/api/change-password" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3634,7 +3731,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8080/api/change-password"
+    "http://127.0.0.1:8000/api/change-password"
 );
 
 const headers = {
