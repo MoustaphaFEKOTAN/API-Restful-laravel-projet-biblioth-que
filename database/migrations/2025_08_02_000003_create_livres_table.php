@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titre');
             $table->text('description');
             $table->date('date_sortie');
+            $table->string('cover')->nullable(); // ✅ Ajout du champ
             $table->foreignId('categorie_id')->constrained('categories')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('slug');
