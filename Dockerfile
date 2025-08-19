@@ -1,33 +1,37 @@
-# Image de base PHP 8.3 avec FPM
-FROM php:8.3-fpm
+# Étape 1 : Image PHP
+FROM php:8.2-fpm
 
-# Installer les extensions PHP nécessaires
+# Installer dépendances système
 RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    curl \
     libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip \
-    git \
-    curl \
- && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
- && rm -rf /var/lib/apt/lists/*
+    libzip-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd mbstring pdo pdo_mysql zip exif pcntl bcmath \
+    && rm -rf /var/lib/apt/lists/*
+
+# Installer Composer (tant qu'on est root)
+RUN curl -sS https://getcomposer.org/installer | php -- \
+    --install-dir=/usr/local/bin --filename=composer
 
 # Créer un utilisateur non-root
 RUN useradd -ms /bin/bash laraveluser
-USER laraveluser
 
-# Définir le répertoire de travail
+# Définir le dossier de travail
 WORKDIR /var/www/html
 
-# Copier le code de l'application
+# Copier tout le code du projet
 COPY --chown=laraveluser:laraveluser . .
 
-# Installer Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Exposer le port (facultatif si on utilise Nginx en front)
-EXPOSE 9000
+# Passer sur l’utilisateur laraveluser
+USER laraveluser
 
 # Commande par défaut
 CMD ["php-fpm"]
