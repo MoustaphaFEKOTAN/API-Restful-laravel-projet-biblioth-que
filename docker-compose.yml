@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env  # Ce fichier reste sur ta machine, pas dans l'image  
     container_name: laravel_app
     working_dir: /var/www/html
     volumes:
