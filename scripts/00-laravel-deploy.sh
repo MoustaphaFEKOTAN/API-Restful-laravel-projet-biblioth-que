@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-echo "=== Installation des dépendances Composer ==="
-composer install --no-dev --optimize-autoloader --working-dir=/var/www/html
-
 echo "=== Cache des configurations ==="
 php artisan config:cache
 
