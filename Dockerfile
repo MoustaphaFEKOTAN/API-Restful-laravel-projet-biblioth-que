@@ -1,5 +1,8 @@
 FROM richarvey/nginx-php-fpm:3.1.6
 
+# Installer bcmath (et autres si besoin)
+RUN docker-php-ext-install bcmath
+
 # Copier le code
 COPY . .
 
