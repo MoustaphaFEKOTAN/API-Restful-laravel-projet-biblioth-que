@@ -14,8 +14,8 @@ php artisan scribe:generate
 echo "=== Cache des configurations ==="
 php artisan config:cache
 
-# echo "=== Cache des routes ==="
-# php artisan route:cache
+echo "=== Cache des routes ==="
+php artisan route:cache
 
 echo "=== Exécution des migrations ==="
 php artisan migrate --force
