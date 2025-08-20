@@ -30,6 +30,22 @@ WORKDIR /var/www/html
 # Copier tout le code du projet
 COPY --chown=laraveluser:laraveluser . .
 
+# Configurer Nginx pour écouter sur le port $PORT
+RUN echo 'server { \
+    listen ${PORT}; \
+    root /var/www/html/public; \
+    index index.php index.html; \
+    location / { try_files $uri /index.php?$query_string; } \
+    location ~ \.php$$ { \
+        include fastcgi_params; \
+        fastcgi_pass 127.0.0.1:9000; \
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \
+    } \
+}' > /etc/nginx/conf.d/default.conf
+
+# Exposer le port
+EXPOSE 8000
+
 # Passer sur l’utilisateur laraveluser
 USER laraveluser
 
