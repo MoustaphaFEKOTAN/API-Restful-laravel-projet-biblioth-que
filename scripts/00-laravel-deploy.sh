@@ -1,16 +1,24 @@
 #!/usr/bin/env bash
-echo "Running composer"
-# composer global require hirak/prestissimo
-composer install --no-dev --working-dir=/var/www/html
+set -e
 
-echo "Caching config..."
+echo "=== Installation des extensions PHP manquantes ==="
+apt-get update && apt-get install -y \
+    php-bcmath \
+    php-mbstring \
+    php-xml \
+    php-zip
+
+echo "=== Installation des dépendances Composer ==="
+composer install --no-dev --optimize-autoloader --working-dir=/var/www/html
+
+echo "=== Cache des configurations ==="
 php artisan config:cache
 
-echo "Caching routes..."
+echo "=== Cache des routes ==="
 php artisan route:cache
 
-echo "Running migrations..."
+echo "=== Exécution des migrations ==="
 php artisan migrate --force
 
-echo "Remplissage de la base de données..." 
+echo "=== Remplissage de la base de données ==="
 php artisan db:seed
