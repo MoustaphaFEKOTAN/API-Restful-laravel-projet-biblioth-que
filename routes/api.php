@@ -79,11 +79,11 @@ Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
 // Email
 Route::get('/email/verify/{id}/{hash}', [AuthenticatedSessionController::class, 'verifyEmail'])
     ->middleware(['auth:sanctum', 'signed'])
-    ->name('verification.verify');
+    ->name('api.verification-verify');
 
 Route::post('/email/verification-notification', [AuthenticatedSessionController::class, 'sendVerificationEmail'])
     ->middleware(['auth:sanctum'])
-    ->name('verification.send');
+    ->name('api.verification-send');
 
 // Mot de passe oublié / reset
 Route::post('/forgot-password', [AuthenticatedSessionController::class, 'forgotPassword'])
