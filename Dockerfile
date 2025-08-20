@@ -1,38 +1,20 @@
-# Étape 1 : Image PHP
-FROM php:8.2-fpm
+FROM richarvey/nginx-php-fpm:3.1.6
 
-# Installer dépendances système
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    curl \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    libzip-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd mbstring pdo pdo_mysql zip exif pcntl bcmath \
-    && rm -rf /var/lib/apt/lists/*
+COPY . .
 
-# Installer Composer (tant qu'on est root)
-RUN curl -sS https://getcomposer.org/installer | php -- \
-    --install-dir=/usr/local/bin --filename=composer
+# Image config
+ENV SKIP_COMPOSER 1
+ENV WEBROOT /var/www/html/public
+ENV PHP_ERRORS_STDERR 1
+ENV RUN_SCRIPTS 1
+ENV REAL_IP_HEADER 1
 
-# Créer un utilisateur non-root
-RUN useradd -ms /bin/bash laraveluser
+# Laravel config
+ENV APP_ENV production
+ENV APP_DEBUG false
+ENV LOG_CHANNEL stderr
 
-# Définir le dossier de travail
-WORKDIR /var/www/html
+# Allow composer to run as root
+ENV COMPOSER_ALLOW_SUPERUSER 1
 
-# Copier tout le code du projet
-COPY --chown=laraveluser:laraveluser . .
-
-# Passer sur l’utilisateur laraveluser
-USER laraveluser
-
-# Commande par défaut 
-CMD ["php-fpm"]
- 
+CMD ["/start.sh"]

@@ -1,36 +1,11 @@
-# ⚡ Secrets
-.env
-
-# ⚡ Git
-.git
-.gitignore
-.gitattributes
-
-# ⚡ Dépendances locales
-/node_modules
-/vendor
-
-# ⚡ Cache & logs Laravel
-/storage/logs
-/storage/framework/cache
-/storage/framework/sessions
-/storage/framework/views
-/storage/framework/testing
-
-# ⚡ Artefacts de build
-/public/storage
-/public/hot
-/public/mix-manifest.json
-
-# ⚡ Docker
-docker-compose*.yml
-Dockerfile
-.dockerignore
-
-# ⚡ IDE / OS
-.vscode
-.idea
-*.swp
-*.swo
-*.DS_Store
-Thumbs.db
+/node_modules 
+/public/hot 
+/public/storage 
+/storage/*.key 
+/vendor 
+.env 
+.phpunit.result.cache 
+Homestead.json 
+Homestead.yaml 
+npm-debug.log 
+yarn-error.log
