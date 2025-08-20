@@ -17,24 +17,22 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install gd mbstring pdo pdo_mysql zip exif pcntl bcmath \
     && rm -rf /var/lib/apt/lists/*
 
-# Installer Composer
+# Installer Composer (tant qu'on est root)
 RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin --filename=composer
 
-# Créer utilisateur non-root
+# Créer un utilisateur non-root
 RUN useradd -ms /bin/bash laraveluser
 
 # Définir le dossier de travail
 WORKDIR /var/www/html
 
-# Copier le code
+# Copier tout le code du projet
 COPY --chown=laraveluser:laraveluser . .
 
 # Passer sur l’utilisateur laraveluser
 USER laraveluser
 
-# Exposer le port (nécessaire pour Render)
-EXPOSE 10000
-
-# Commande de lancement
+# Commande par défaut 
 CMD ["php-fpm"]
+ 
