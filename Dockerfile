@@ -34,5 +34,5 @@ COPY --chown=laraveluser:laraveluser . .
 USER laraveluser
 
 # Commande par défaut 
-CMD ["php-fpm"]
+CMD service nginx start && php-fpm -F
  
