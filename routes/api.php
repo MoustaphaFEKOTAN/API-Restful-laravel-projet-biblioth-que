@@ -1,13 +1,12 @@
 <?php
 
-use App\Actions\Fortify\ResetUserPassword;
-use App\Actions\Fortify\UpdateUserPassword;
+
 use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolesController;
 use App\Models\Roles;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\LivreController;
 use Illuminate\Http\Request;
 
@@ -48,7 +47,7 @@ Route::get('/recherche/livre', [LivreController::class, 'recherche'])->name('api
 //    LES ROUTES POUR LES ACTIONS SUR LA TABLE USERS
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
-Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/login', [AuthController::class, 'store']);
 
 /**
  * @group Authentification
@@ -77,22 +76,22 @@ Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
 
 
 // Email
-Route::get('/email/verify/{id}/{hash}', [AuthenticatedSessionController::class, 'verifyEmail'])
+Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])
     ->middleware(['auth:sanctum', 'signed'])
     ->name('api.verification-verify');
 
-Route::post('/email/verification-notification', [AuthenticatedSessionController::class, 'sendVerificationEmail'])
+Route::post('/email/verification-notification', [AuthController::class, 'sendVerificationEmail'])
     ->middleware(['auth:sanctum'])
     ->name('api.verification-send');
 
 // Mot de passe oublié / reset
-Route::post('/forgot-password', [AuthenticatedSessionController::class, 'forgotPassword'])
+Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])
     ->name('api.forgot-password');
 
-Route::post('/reset-password', [AuthenticatedSessionController::class, 'resetPassword'])
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])
     ->name('api.reset-password');
 
-Route::middleware('auth:sanctum')->post('/change-password', [AuthenticatedSessionController::class, 'changePassword'])
+Route::middleware('auth:sanctum')->post('/change-password', [AuthController::class, 'changePassword'])
     ->name('api.change-password');
 
 

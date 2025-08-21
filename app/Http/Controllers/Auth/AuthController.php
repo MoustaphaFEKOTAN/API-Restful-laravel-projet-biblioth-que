@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 
 
-class AuthenticatedSessionController extends Controller
+class AuthController extends Controller
 {
     /**
  * @group Authentification
