@@ -33,6 +33,6 @@ COPY --chown=laraveluser:laraveluser . .
 # Passer sur l’utilisateur laraveluser
 USER laraveluser
 
-# Commande par défaut 
+# Commande par défaut  
 CMD ["php-fpm"]
  
