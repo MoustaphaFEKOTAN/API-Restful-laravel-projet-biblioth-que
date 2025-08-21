@@ -105,13 +105,7 @@ class AuthController extends Controller
 // ✅ Renvoyer le lien de vérification
     public function sendVerificationEmail(Request $request)
     {
-        if ($request->user()->hasVerifiedEmail()) {
-            return response()->json(['message' => 'Email déjà vérifié.']);
-        }
-
-        $request->user()->sendEmailVerificationNotification();
-
-        return response()->json(['message' => 'Lien de vérification envoyé.']);
+       
     }
 
 
@@ -134,9 +128,7 @@ class AuthController extends Controller
 
     public function verifyEmail(EmailVerificationRequest $request)
     {
-        $request->fulfill();
-
-        return response()->json(['message' => 'Email vérifié avec succès.']);
+       
     }
 
 
@@ -158,21 +150,7 @@ class AuthController extends Controller
 //Mot de passe oublié(MAIL DE CHANGEMENT)
     public function forgotPassword(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email'],
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
-
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
-
-        return $status === Password::RESET_LINK_SENT
-            ? response()->json(['message' => 'Lien de réinitialisation envoyé.'])
-            : response()->json(['message' => 'Impossible d\'envoyer le lien.'], 500);
+       
     }
 
 
@@ -198,22 +176,7 @@ class AuthController extends Controller
 //Nouveau de mot de passe 
     public function resetPassword(Request $request)
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed|min:8',
-        ]);
-
-        $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
-            function ($user, $password) use ($request) {
-                app(ResetUserPassword::class)->reset($user, $request->all());
-            }
-        );
-
-        return $status === Password::PASSWORD_RESET
-            ? response()->json(['message' => 'Mot de passe réinitialisé avec succès.'])
-            : response()->json(['message' => __($status)], 400);
+       
     }
 
 
@@ -223,17 +186,7 @@ class AuthController extends Controller
 //Modification de mot de passe lorsqu'on est déjà connecté
     public function changePassword(Request $request)
     {
-        try {
-            app(UpdateUserPassword::class)->update($request->user(), $request->all());
-
-            return response()->json([
-                'message' => 'Mot de passe mis à jour avec succès.'
-            ]);
-        } catch (ValidationException $e) {
-            return response()->json([
-                'errors' => $e->errors()
-            ], 422);
-        }
+   
     }
 
 
