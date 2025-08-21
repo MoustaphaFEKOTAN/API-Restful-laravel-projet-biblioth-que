@@ -30,5 +30,4 @@ COPY . .
 
 
 # Commande par défaut 
-CMD ["php-fpm"]
- 
+CMD service php8.2-fpm start && nginx -g 'daemon off;'
