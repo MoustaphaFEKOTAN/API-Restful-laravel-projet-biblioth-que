@@ -103,6 +103,6 @@ Route::get('/roles', function () {
 });
 
 
-// Route::get('/test', function () {
-//     return 'ceci est un test réussi';
-// });
+Route::get('/', function () {
+    return 'ceci est un test réussi';
+});

@@ -4,7 +4,7 @@ FROM richarvey/nginx-php-fpm:3.1.6
 RUN docker-php-ext-install bcmath
 
 # Copier le code
-COPY . /var/www/html
+COPY . .
 
 # Config Laravel
 ENV SKIP_COMPOSER 1
