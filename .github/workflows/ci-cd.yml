@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - deploy_render_deploy
+      - ci_cd
 
 env:  # variables globales (comme dans GitLab)
   DOCKER_IMAGE: registry.gitlab.com/moustaphafekotan/api-restful-laravel-bibliotheque
