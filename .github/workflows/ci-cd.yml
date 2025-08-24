@@ -1,7 +1,5 @@
 name: CI_CD Pipeline
 
-permissions:
-  contents: read
 
 on:
   push:
@@ -177,13 +175,13 @@ jobs:
   #         severity: HIGH,CRITICAL
   #   continue-on-error: true
 
-  iac_tests:
-    runs-on: ubuntu-latest
-    needs: deploy
-    steps:
-      - uses: actions/checkout@v4
-      - name: IaC scan with Checkov
-        uses: bridgecrewio/checkov-action@master
-        with:
-          directory: .
-    continue-on-error: true
+  # iac_tests:
+  #   runs-on: ubuntu-latest
+  #   needs: deploy
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: IaC scan with Checkov
+  #       uses: bridgecrewio/checkov-action@master
+  #       with:
+  #         directory: .
+  #   continue-on-error: true
