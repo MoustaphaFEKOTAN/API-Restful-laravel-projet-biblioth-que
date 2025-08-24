@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI_CD Pipeline
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Log in to GitLab registry
-        run: echo "${{ secrets.GITLAB_TOKEN }}" | docker login -u gitlab-ci-token --password-stdin ${{ env.DOCKER_IMAGE }}
+        run:  echo "${{ secrets.CI_REGISTRY_PASSWORD }}" | docker login -u "${{ secrets.CI_REGISTRY_USER }}" --password-stdin registry.gitlab.com
 
       - name: Build Docker image
         run: docker build -t ${{ env.DOCKER_IMAGE }}:latest .
