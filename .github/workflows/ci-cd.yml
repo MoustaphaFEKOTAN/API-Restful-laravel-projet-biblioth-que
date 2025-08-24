@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - deploy_render_deploy
+  workflow_dispatch: 
 
 env:  # variables globales (comme dans GitLab)
   DOCKER_IMAGE: registry.gitlab.com/moustaphafekotan/api-restful-laravel-bibliotheque
