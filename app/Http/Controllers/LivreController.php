@@ -72,6 +72,10 @@ class LivreController extends Controller
 public function update(Request $request, $slug)
 {
     $livre = Livres::where('slug', $slug)->firstOrFail();
+    if ($livre->user_id !== Auth::id()) {
+
+        return response()->json(['message' => 'Non autorisé'], 403);
+    }
 
     $request->validate([
         'titre' => 'sometimes|string|max:255',
