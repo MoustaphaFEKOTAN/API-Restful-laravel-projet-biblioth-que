@@ -7,7 +7,7 @@ on:
       - ci_cd
 
 env:
-  DOCKER_IMAGE: ghcr.io/moustaphafekotan/api-restful-laravel-bibliotheque:latest
+  DOCKER_IMAGE: ghcr.io/moustaphafekotan/api-restful-laravel-bibliotheque
   
   COMPOSER_CACHE_DIR: .composer-cache
   COMPOSER_HOME: .composer
