@@ -21,7 +21,8 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 # Installer les dépendances Laravel
 RUN composer install --no-dev --optimize-autoloader --working-dir=/var/www/html
 
-COPY conf/nginx-site.conf /etc/nginx/nginx.conf
+COPY conf/nginx-site.conf /etc/nginx/conf.d/default.conf
+
 
 
 CMD ["/start.sh"]
