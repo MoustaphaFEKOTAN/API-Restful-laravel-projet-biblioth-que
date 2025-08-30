@@ -4,7 +4,7 @@ FROM richarvey/nginx-php-fpm:3.1.6
 RUN docker-php-ext-install bcmath
 
 # Copier le code
-COPY . /var/www/html
+COPY . .
 
 # Config Laravel
 ENV SKIP_COMPOSER 1
@@ -20,8 +20,6 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # Installer les dépendances Laravel
 RUN composer install --no-dev --optimize-autoloader --working-dir=/var/www/html
-
-COPY conf/nginx-site.conf /etc/nginx/conf.d/default.conf
 
 
 
