@@ -22,6 +22,9 @@ class RolesController extends Controller
  * Créer un nouveau role
  * @authenticated
  */
+
+    //les Méthodes aurait pu être dans un repository dédié pour une meilleure organisation, mais pour la simplicité du projet, elle est dans le controller.
+    //les validations sont faites directement dans le controller, mais pour un projet plus complexe, j'aurais utiliser des Form Requests dédiés.
     public function store(Request $request)
     {
         $request->validate([

@@ -20,7 +20,11 @@ class LivreController extends Controller
  * 
  * @authenticated
  */
- public function store(Request $request)
+
+
+    //les Méthodes aurait pu être dans un repository dédié pour une meilleure organisation, mais pour la simplicité du projet, elle est dans le controller.
+    //les validations sont faites directement dans le controller, mais pour un projet plus complexe, j'aurais utiliser des Form Requests dédiés.
+    public function store(Request $request)
 {
     $request->validate([
         'titre' => 'required|string|max:255',
@@ -36,11 +40,10 @@ class LivreController extends Controller
     $livre->date_sortie = $request->date_sortie;
     $livre->categorie_id = $request->categorie_id;
 
-    // ✅ Imposé automatiquement
     $livre->user_id = auth::id();
     $livre->slug = (string) Str::uuid();
 
-       // ✅ Gestion de l’image
+       // Gestion de l’image
     if ($request->hasFile('cover')) {
         $path = $request->file('cover')->store('covers', 'public');
         $livre->cover = $path;
@@ -87,7 +90,7 @@ public function update(Request $request, $slug)
 
     $livre->update($request->only(['titre', 'description', 'date_sortie', 'categorie_id']));
 
-      // ✅ Si une nouvelle image est envoyée
+      // Si une nouvelle image est envoyée
     if ($request->hasFile('cover')) {
         $old_image = $livre->cover;
          if ($old_image) {
@@ -124,12 +127,12 @@ $livre->delete();
 {
     $query = Livres::query();
 
-    // 🔍 Filtrage par catégorie (optionnel)
+    // Filtrage par catégorie (optionnel)
     if ($request->has('categorie')) {
         $query->where('categorie_id', $request->categorie);
     }
 
-    // 🔍 Filtrage par mot-clé dans le titre ou description (optionnel)
+    //Filtrage par mot-clé dans le titre ou description (optionnel)
     if ($request->has('search')) {
         $search = $request->search;
         $query->where(function($q) use ($search) {
@@ -138,14 +141,14 @@ $livre->delete();
         });
     }
 
-    // 📅 Tri (optionnel)
+    //Tri (optionnel)
     if ($request->has('sort_by') && $request->has('order')) {
         $query->orderBy($request->sort_by, $request->order);
     } else {
         $query->orderBy('created_at', 'desc'); // par défaut
     }
 
-    // 📄 Pagination (10 livres par page par défaut)
+    //Pagination (10 livres par page par défaut)
     $livres = $query->paginate($request->get('per_page', 10));
     
   if ($livres->isEmpty()) {

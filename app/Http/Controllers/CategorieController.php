@@ -25,8 +25,12 @@ class CategorieController extends Controller
  * 
  * @authenticated
  */
-   
-   public function store(Request $request)
+
+
+    //les Méthodes aurait pu être dans un repository dédié pour une meilleure organisation, mais pour la simplicité du projet, elle est dans le controller.
+    //les validations sont faites directement dans le controller, mais pour un projet plus complexe, j'aurais utiliser des Form Requests dédiés.
+
+    public function store(Request $request)
 {
     $request->validate([
         'nom' => 'required|string|max:255',
@@ -34,7 +38,7 @@ class CategorieController extends Controller
 
     $categorie = new Categories();
     $categorie->nom = $request->nom;
-    $categorie->slug = (string) Str::uuid(); // 💡 sécuriser bien avec cast string
+    $categorie->slug = (string) Str::uuid();
 
     $categorie->save();
 
